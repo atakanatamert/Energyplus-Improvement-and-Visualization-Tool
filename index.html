@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>3D Test w/BabylonJS</title>
+    <script src="https://cdn.babylonjs.com/babylon.max.js"></script>
+    <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <style>
+        #canvas {
+          width: 100%;
+          height: 100%;
+        }
+    </style>
+    <script>
+      window.addEventListener("DOMContentLoaded", function() {
+        var canvas = document.getElementById("canvas");
+        var engine = new BABYLON.Engine(canvas, true);
+        var createScene = function() {
+          var scene = new BABYLON.Scene(engine);
+          scene.createDefaultCameraOrLight(true, true, true);
+
+          //scene.clearColor = new BABYLON.Color3.White();
+  /*
+          //var box = BABYLON.Mesh.CreateBox("Box", 4.0, scene);
+          var camera = new BABYLON.ArcRotateCamera(
+            "arcCamera",
+            BABYLON.Tools.ToRadians(45),
+            BABYLON.Tools.ToRadians(45),
+            10.0,
+           // box.position,
+            scene
+          );
+          camera.attachControl(canvas, true);
+
+        
+                var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 2, -10), scene);
+                camera.setTarget(BABYLON.Vector3.Zero());
+                camera.attachControl(canvas, true);
+
+                camera.keysUp.push(87);
+                camera.keysDown.push(83);
+                camera.keysLeft.push(65);
+                camera.keysRight.push(68);
+                */
+
+          BABYLON.SceneLoader.Append("./", "DC_SupremeCourt.stl",scene,function(scene) {
+              // do something with the scene
+              // Create a default arc rotate camera and light.
+              scene.createDefaultCameraOrLight(true, true, true);
+
+              // The default camera looks at the back of the asset.
+              // Rotate the camera by 180 degrees to the front of the asset.
+              scene.activeCamera.alpha += Math.PI;
+            }
+          );
+
+          return scene;
+        };
+
+        var scene = createScene();
+        engine.runRenderLoop(function() {
+          scene.render();
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,198 @@
+@font-face {
+  font-family: "Raleway";
+  src: URL("Raleway/Raleway-Light.ttf") format("truetype");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: URL("Raleway/Raleway-Thin.ttf") format("truetype");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: URL("Raleway/Raleway-Medium.ttf") format("truetype");
+  font-weight: 300;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  background: #d9d8d7;
+  height: 100%;
+  width: 100%;
+}
+
+#importHeaderContainer {
+  text-align: center;
+}
+
+#close {
+  margin: 0;
+  top: 20px;
+  right: 20px;
+  position: absolute
+}
+
+#close:hover {
+  color: red;
+}
+
+.stitched {
+  display: none;
+  position: fixed;
+  z-index: 9;
+  background: #172601;
+  opacity: 0.8;
+  color: #d9d8d7;
+  height: 100%;
+  width: 100%;
+  padding-top: 8em;
+  /*
+  border: 2px dashed #a6a6a6;
+  border-radius: 10px;
+  height: 100%;
+  */
+}
+
+#importHeader {
+  margin-top: 0;
+  color: #a6a6a6;
+}
+
+#plus {
+  margin-bottom: 10px;
+  color: #a6a6a6;
+  font-size: 60px;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Raleway", "thin", sans-serif;
+  -webkit-user-select: none;
+  font-weight: 100;
+  font-size: 40px;
+}
+
+h2 {
+  text-align: left;
+  font-family: "Raleway", "thin", sans-serif;
+  text-transform: capitalize;
+  -webkit-user-select: none;
+  font-weight: 200;
+  font-size: 18px;
+  margin-top: 0;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #494949 !important;
+}
+
+.sim {
+  margin: 20px;
+  color: #494949 !important;
+  text-transform: initial;
+  text-decoration: none;
+  background: #d9d8d7;
+  padding: 15px;
+  border-radius: 15px;
+  border: 4px solid #494949 !important;
+  display: inline-block;
+}
+
+.sim:hover .simInfo {
+  opacity: 0.6;
+}
+
+.simInfo {
+  position: absolute;
+  width: 144px;
+  height: 119px;
+  margin-left: -20px;
+  top: 20px;
+  opacity: 0;
+  transition: .3s ease;
+  border: 5px solid transparent;
+  background-color: red;
+  border-radius: 15px;
+}
+
+.icon {
+  color: white;
+  font-size: 60px;
+  position: absolute;
+  top: 51%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* When you move the mouse over the icon, change color */
+
+.fa-user:hover {
+  color: #eee;
+}
+
+.removeSim {
+  display: none;
+  color: red;
+  font-size: 28px;
+  margin: 0;
+  text-align: center;
+}
+
+.sim:hover {
+  border-color: red !important;
+}
+
+/* .sim:hover > h2 {
+  border-bottom-color: red !important;
+} */
+
+p:disabled, p[disabled] {
+  pointer-events: none;
+  border: 4px solid #999999 !important;
+  color: #999999 !important;
+}
+
+#addSim {
+  left: 20px;
+  bottom: 20px;
+}
+
+#runSim {
+  right: 20px;
+  bottom: 20px;
+}
+
+.simButton {
+  margin: 0;
+  position: absolute;
+  color: #494949 !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #d9d8d7;
+  padding: 15px;
+  border-radius: 15px;
+  border-color: #898c37;
+  border: 4px solid #494949 !important;
+  display: inline-block;
+  transition: all 0.4s ease 0s;
+}
+
+.simButton:hover {
+  color: #d9d8d7 !important;
+  background: #9aa641;
+  border-radius: 25px;
+  border-color: #898c37 !important;
+  transition: all 0.4s ease 0s;
+}
+
+p {
+  font-family: "Raleway", "thin", sans-serif;
+  margin: 5;
+}
