@@ -31,9 +31,9 @@ class SimulationObject {
 function runSelectedSimulations() {
   var i = 1;
   var filePath = simulationMap["Simulation" + i].idf.path.replace(
-      simulationMap["Simulation" + i].idf.name,
-      ""
-    );
+    simulationMap["Simulation" + i].idf.name,
+    ""
+  );
   data +=
     "cd " +
     filePath +
@@ -43,7 +43,7 @@ function runSelectedSimulations() {
     "cd SimulationResults";
   for (i = 1; i < simulationCount + 1; i++) {
     console.log(i);
-    
+
     data +=
       "\n" +
       "mkdir Simulation" +
@@ -69,7 +69,7 @@ function runSelectedSimulations() {
     if (err) console.log(err);
     console.log("Successfully Written to File.");
   });
-   
+
   i = 1;
   //console.log(simulationMap["Simulation" + i].epw.path);
 }
@@ -84,28 +84,28 @@ function isRunnable() {
 
 function detectDrop() {
   //console.log("DetectDrop initiated");
-  var holder = document.getElementById("importScreen");
+  var holder = document.getElementById("importScreen"); 
   var plusIcon = document.getElementById("plus");
   var importHeader = document.getElementById("importHeader");
 
   holder.ondragover = () => {
-    holder.style.borderColor = "#F27405";
-    plusIcon.style.color = "#F27405";
-    importHeader.style.color = "#F27405";
+    holder.style.borderColor = "#D9806C";
+    plusIcon.style.color = "#D9806C";
+    importHeader.style.color = "#D9806C";
     return false;
   };
 
   holder.ondragleave = () => {
-    holder.style.borderColor = "#A6A6A6";
-    plusIcon.style.color = "#A6A6A6";
-    importHeader.style.color = "#A6A6A6";
+    holder.style.borderColor = "#F2F2F2";
+    plusIcon.style.color = "#F2F2F2";
+    importHeader.style.color = "#F2F2F2";
     return false;
   };
 
   holder.ondragend = () => {
-    holder.style.borderColor = "#A6A6A6";
-    plusIcon.style.color = "#A6A6A6";
-    importHeader.style.color = "#A6A6A6";
+    holder.style.borderColor = "#F2F2F2";
+    plusIcon.style.color = "#F2F2F2";
+    importHeader.style.color = "#F2F2F2";
     return false;
   };
 
@@ -114,9 +114,9 @@ function detectDrop() {
 
     if (e.dataTransfer.files.length > 1) {
       //Multiple file dragged
-      holder.style.borderColor = "#A6A6A6";
-      plusIcon.style.color = "#A6A6A6";
-      importHeader.style.color = "#A6A6A6";
+      holder.style.borderColor = "#F2F2F2";
+      plusIcon.style.color = "#F2F2F2";
+      importHeader.style.color = "#F2F2F2";
 
       for (var i = 0; i < e.dataTransfer.files.length; i++) {
         if (
@@ -159,21 +159,21 @@ function detectDrop() {
 
     if (idf == null && epw == null) {
       importHeader.textContent = "Only drag .idf and .epw file";
-      holder.style.borderColor = "#A6A6A6";
-      plusIcon.style.color = "#A6A6A6";
-      importHeader.style.color = "#A6A6A6";
+      holder.style.borderColor = "#F2F2F2";
+      plusIcon.style.color = "#F2F2F2";
+      importHeader.style.color = "#F2F2F2";
       detectDrop();
     } else if (idf == null) {
       importHeader.textContent = "Please drag .idf file";
-      holder.style.borderColor = "#A6A6A6";
-      plusIcon.style.color = "#A6A6A6";
-      importHeader.style.color = "#A6A6A6";
+      holder.style.borderColor = "#F2F2F2";
+      plusIcon.style.color = "#F2F2F2";
+      importHeader.style.color = "#F2F2F2";
       detectDrop();
     } else if (epw == null) {
       importHeader.textContent = "Please drag .epw file";
-      holder.style.borderColor = "#A6A6A6";
-      plusIcon.style.color = "#A6A6A6";
-      importHeader.style.color = "#A6A6A6";
+      holder.style.borderColor = "#F2F2F2";
+      plusIcon.style.color = "#F2F2F2";
+      importHeader.style.color = "#F2F2F2";
       detectDrop();
     } else {
       simulationCount++;
@@ -228,13 +228,16 @@ function toggleBlur() {
     document.getElementById("addSim").style = null;
     document.getElementById("runSim").style = null;
     document.getElementById("simulations").style = null;
+    document.getElementById("bottomControls").style = null;
   } else {
-    document.getElementById("importScreen").style.display = "block";
+    document.getElementById("importScreen").style.display = "table";
     document.getElementById("addSim").style =
       " filter: blur(8px);-webkit-filter: blur(8px);";
     document.getElementById("runSim").style =
       " filter: blur(8px);-webkit-filter: blur(8px);";
     document.getElementById("simulations").style =
+      " filter: blur(8px);-webkit-filter: blur(8px);";
+    document.getElementById("bottomControls").style =
       " filter: blur(8px);-webkit-filter: blur(8px);";
   }
   isOpen = !isOpen;

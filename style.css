@@ -1,3 +1,21 @@
+
+:root{
+/* Color Theme Swatches in Hex */
+--Terrazzo-1-hex: #034001;
+--Terrazzo-2-hex: #022601;
+--Terrazzo-3-hex: #66A649;
+--Terrazzo-4-hex: #D9806C;
+--Terrazzo-5-hex: #F2F2F2;
+}
+
+/* Color Theme Swatches in RGBA 
+.Terrazzo-1-rgba { color: rgba(3, 63, 1, 1); }
+.Terrazzo-2-rgba { color: rgba(2, 38, 0, 1); }
+.Terrazzo-3-rgba { color: rgba(102, 165, 72, 1); }
+.Terrazzo-4-rgba { color: rgba(216, 128, 108, 1); }
+.Terrazzo-5-rgba { color: rgba(242, 242, 242, 1); }
+*/
+
 @font-face {
   font-family: "Raleway";
   src: URL("Raleway/Raleway-Light.ttf") format("truetype");
@@ -23,12 +41,34 @@
 body {
   margin: 0px;
   padding: 0px;
-  background: #d9d8d7;
+  background: var(--Terrazzo-2-hex);
   height: 100%;
   width: 100%;
 }
 
+#simulations{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 80%;
+  padding: 1px;
+  overflow-y: auto;
+}
+
+#bottomControls{
+  background-color: var(--Terrazzo-1-hex);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  height: 20%;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  position: fixed;
+}
+
 #importHeaderContainer {
+  display: table-cell;
+  vertical-align: middle;
   text-align: center;
 }
 
@@ -36,7 +76,8 @@ body {
   margin: 0;
   top: 20px;
   right: 20px;
-  position: absolute
+  position: absolute;
+  color: var(--Terrazzo-5-hex);
 }
 
 #close:hover {
@@ -49,11 +90,11 @@ body {
   z-index: 9;
   background: #172601;
   opacity: 0.8;
-  color: #d9d8d7;
+  color: var(--Wooden-1-hex);
   height: 100%;
-  width: 100%;
+  width: 100%; /*
   padding-top: 8em;
-  /*
+ 
   border: 2px dashed #a6a6a6;
   border-radius: 10px;
   height: 100%;
@@ -62,12 +103,12 @@ body {
 
 #importHeader {
   margin-top: 0;
-  color: #a6a6a6;
+  color: var(--Terrazzo-5-hex);
 }
 
 #plus {
   margin-bottom: 10px;
-  color: #a6a6a6;
+  color: var(--Terrazzo-5-hex);
   font-size: 60px;
 }
 
@@ -88,19 +129,20 @@ h2 {
   font-size: 18px;
   margin-top: 0;
   padding-bottom: 5px;
-  border-bottom: 2px solid #494949 !important;
+  border-bottom: 2px solid var(--Terrazzo-4-hex) !important;
 }
 
 .sim {
   margin: 20px;
-  color: #494949 !important;
+  color: var(--Terrazzo-4-hex) !important;
   text-transform: initial;
   text-decoration: none;
-  background: #d9d8d7;
+  background: var(--Terrazzo-2-hex);
   padding: 15px;
   border-radius: 15px;
-  border: 4px solid #494949 !important;
+  border: 4px solid var(--Terrazzo-4-hex) !important;
   display: inline-block;
+  position: relative;
 }
 
 .sim:hover .simInfo {
@@ -109,10 +151,10 @@ h2 {
 
 .simInfo {
   position: absolute;
-  width: 144px;
-  height: 119px;
   margin-left: -20px;
-  top: 20px;
+  height: 100%;
+  width: 100%;
+  top: -5px;
   opacity: 0;
   transition: .3s ease;
   border: 5px solid transparent;
@@ -155,41 +197,41 @@ h2 {
 
 p:disabled, p[disabled] {
   pointer-events: none;
-  border: 4px solid #999999 !important;
-  color: #999999 !important;
+  border: 4px solid var(--Terrazzo-2-hex) !important;
+  color: var(--Terrazzo-2-hex) !important;
 }
 
 #addSim {
   left: 20px;
   bottom: 20px;
+  position: absolute;
 }
 
 #runSim {
   right: 20px;
   bottom: 20px;
+  position: absolute;
 }
 
 .simButton {
   margin: 0;
   position: absolute;
-  color: #494949 !important;
+  color: var(--Terrazzo-5-hex) !important;
   text-transform: uppercase;
   text-decoration: none;
-  background: #d9d8d7;
+  background: var(--Terrazzo-1-hex);
   padding: 15px;
   border-radius: 15px;
-  border-color: #898c37;
-  border: 4px solid #494949 !important;
+  border: 4px solid var(--Terrazzo-5-hex) !important;
   display: inline-block;
   transition: all 0.4s ease 0s;
 }
 
 .simButton:hover {
-  color: #d9d8d7 !important;
-  background: #9aa641;
+  color: var(--Terrazzo-3-hex)  !important;
   border-radius: 25px;
-  border-color: #898c37 !important;
-  transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s; 
+  border: 4px solid var(--Terrazzo-3-hex) !important;
 }
 
 p {

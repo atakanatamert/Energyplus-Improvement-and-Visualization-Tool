@@ -10,11 +10,11 @@
 
 <body>
 
-    <div id="importScreen" class="stitched">
+    <div id="importScreen" class="stitched" ondragover="detectDrop()">
         <div id="importHeaderContainer">
             <h1 id="close" onclick="closeAddSim()">X</h1>
             <h1 id="plus">+</h1>
-            <h1 id="importHeader" ondragover="detectDrop()">Drag .idf and .epw files.</h1>
+            <h1 id="importHeader">Drag .idf and .epw files.</h1>
         </div>
     </div>
 
@@ -22,12 +22,14 @@
 
     </div>
 
-    <div onclick="inputControl()">
-        <p id="addSim" class="simButton">Add Simulation +</p>
-    </div>
-    <div
-        onclick="runSelectedSimulations(); let { remote } = require('electron'); remote.getGlobal('RunSimulation')(); ">
-        <p id="runSim" class="simButton" disabled="true">Run &#x25b6</p>
+    <div id="bottomControls">
+        <div onclick="inputControl()">
+            <p id="addSim" class="simButton">Add Simulation &#xFF0B</p>
+        </div>
+        <div
+            onclick="runSelectedSimulations(); let { remote } = require('electron'); remote.getGlobal('RunSimulation')(); ">
+            <p id="runSim" class="simButton" disabled="true">Run &#x25b6</p>
+        </div>
     </div>
 </body>
 
