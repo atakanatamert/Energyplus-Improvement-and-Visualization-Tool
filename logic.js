@@ -7,10 +7,9 @@ var simulationMap = {};
 var simulationCount = 0;
 var data = "";
 
+const exec = require("child_process").exec;
 
-const exec = require('child_process').exec;
-
-fs.readFile("run.sh", function (err, buf) {
+fs.readFile("run.sh", function(err, buf) {
   console.log(buf.toString());
 });
 
@@ -27,18 +26,52 @@ class SimulationObject {
   get epw() {
     return this.epwFile;
   }
-
 }
 
 function runSelectedSimulations() {
-  var filePath = simulationMap["Simulation" + simulationCount].idf.path.replace(simulationMap["Simulation" + simulationCount].idf.name, '');
-  data = "cd " + filePath + "\n" + "mkdir SimulationResults" + "\n" + "cd SimulationResults" + "\n" + "energyplus -w " + simulationMap["Simulation" + simulationCount].epw.path + " -r " + simulationMap["Simulation" + simulationCount].idf.path;
-  console.log(simulationMap["Simulation" + simulationCount].epw.path);
-  fs.writeFile("run.sh", data, (err) => {
+  var i = 1;
+  var filePath = simulationMap["Simulation" + i].idf.path.replace(
+      simulationMap["Simulation" + i].idf.name,
+      ""
+    );
+  data +=
+    "cd " +
+    filePath +
+    "\n" +
+    "mkdir SimulationResults" +
+    "\n" +
+    "cd SimulationResults";
+  for (i = 1; i < simulationCount + 1; i++) {
+    console.log(i);
+    
+    data +=
+      "\n" +
+      "mkdir Simulation" +
+      i +
+      "\n" +
+      "cd Simulation" +
+      i +
+      "\n" +
+      "energyplus -w " +
+      simulationMap["Simulation" + i].epw.path +
+      " -r " +
+      simulationMap["Simulation" + i].idf.path +
+      "\n" +
+      "cd .." +
+      "\n";
+  }
+
+  fs.writeFile("run.sh", data, err => {
     if (err) console.log(err);
     console.log("Successfully Written to File.");
   });
-
+  fs.writeFile("run.bat", data, err => {
+    if (err) console.log(err);
+    console.log("Successfully Written to File.");
+  });
+   
+  i = 1;
+  //console.log(simulationMap["Simulation" + i].epw.path);
 }
 
 function isRunnable() {
@@ -54,8 +87,6 @@ function detectDrop() {
   var holder = document.getElementById("importScreen");
   var plusIcon = document.getElementById("plus");
   var importHeader = document.getElementById("importHeader");
-
-
 
   holder.ondragover = () => {
     holder.style.borderColor = "#F27405";
@@ -88,21 +119,40 @@ function detectDrop() {
       importHeader.style.color = "#A6A6A6";
 
       for (var i = 0; i < e.dataTransfer.files.length; i++) {
-        if (e.dataTransfer.files[i].name.split('.').pop().includes("idf")) {
+        if (
+          e.dataTransfer.files[i].name
+            .split(".")
+            .pop()
+            .includes("idf")
+        ) {
           idf = e.dataTransfer.files[i];
           console.log("idf file loaded");
         }
 
-        if (e.dataTransfer.files[i].name.split('.').pop().includes("epw")) {
+        if (
+          e.dataTransfer.files[i].name
+            .split(".")
+            .pop()
+            .includes("epw")
+        ) {
           epw = e.dataTransfer.files[i];
           console.log("epw file loaded!");
         }
       }
-
-    } else if (e.dataTransfer.files[0].name.split('.').pop().includes("idf")) {
+    } else if (
+      e.dataTransfer.files[0].name
+        .split(".")
+        .pop()
+        .includes("idf")
+    ) {
       console.log("correct file!");
       idf = e.dataTransfer.files[0];
-    } else if (e.dataTransfer.files[0].name.split('.').pop().includes("epw")) {
+    } else if (
+      e.dataTransfer.files[0].name
+        .split(".")
+        .pop()
+        .includes("epw")
+    ) {
       console.log("correct file!");
       epw = e.dataTransfer.files[0];
     }
@@ -113,25 +163,25 @@ function detectDrop() {
       plusIcon.style.color = "#A6A6A6";
       importHeader.style.color = "#A6A6A6";
       detectDrop();
-    }
-    else if (idf == null) {
+    } else if (idf == null) {
       importHeader.textContent = "Please drag .idf file";
       holder.style.borderColor = "#A6A6A6";
       plusIcon.style.color = "#A6A6A6";
       importHeader.style.color = "#A6A6A6";
       detectDrop();
-    }
-    else if (epw == null) {
+    } else if (epw == null) {
       importHeader.textContent = "Please drag .epw file";
       holder.style.borderColor = "#A6A6A6";
       plusIcon.style.color = "#A6A6A6";
       importHeader.style.color = "#A6A6A6";
       detectDrop();
-    }
-    else {
+    } else {
       simulationCount++;
 
-      simulationMap["Simulation" + simulationCount] = new SimulationObject(idf, epw);
+      simulationMap["Simulation" + simulationCount] = new SimulationObject(
+        idf,
+        epw
+      );
 
       createSimulationVisualElement();
 
@@ -146,11 +196,15 @@ function detectDrop() {
 
 function removeSimulation(simId) {
   console.log("Remove Simulation " + simId);
-  document.getElementById("sim" + (simId)).remove();
+  document.getElementById("sim" + simId).remove();
 
   if (document.getElementById("sim" + (simId + 1)) != null) {
-    document.getElementById("sim" + (simId + 1)).getElementsByTagName('h2')[0].textContent = "Simulation " + (simId);
-    document.getElementById("sim" + (simId + 1)).setAttribute("onclick", "removeSimulation(" + simId + ")");
+    document
+      .getElementById("sim" + (simId + 1))
+      .getElementsByTagName("h2")[0].textContent = "Simulation " + simId;
+    document
+      .getElementById("sim" + (simId + 1))
+      .setAttribute("onclick", "removeSimulation(" + simId + ")");
     document.getElementById("sim" + (simId + 1)).id = "sim" + simId;
   }
 
@@ -174,13 +228,14 @@ function toggleBlur() {
     document.getElementById("addSim").style = null;
     document.getElementById("runSim").style = null;
     document.getElementById("simulations").style = null;
-
   } else {
     document.getElementById("importScreen").style.display = "block";
-    document.getElementById("addSim").style = " filter: blur(8px);-webkit-filter: blur(8px);"
-    document.getElementById("runSim").style = " filter: blur(8px);-webkit-filter: blur(8px);"
-    document.getElementById("simulations").style = " filter: blur(8px);-webkit-filter: blur(8px);"
-
+    document.getElementById("addSim").style =
+      " filter: blur(8px);-webkit-filter: blur(8px);";
+    document.getElementById("runSim").style =
+      " filter: blur(8px);-webkit-filter: blur(8px);";
+    document.getElementById("simulations").style =
+      " filter: blur(8px);-webkit-filter: blur(8px);";
   }
   isOpen = !isOpen;
 }
@@ -195,7 +250,6 @@ function createSimulationVisualElement() {
   var a = document.createElement("a");
 
   a.className = "icon";
-
 
   var i = document.createElement("i");
   i.className = "fa fa-trash";

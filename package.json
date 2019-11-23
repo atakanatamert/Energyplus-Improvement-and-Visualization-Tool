@@ -8,6 +8,11 @@
     "electron-reload": "^1.5.0",
     "gbxml-viewer-basic": "^0.5.2"
   },
+  "build": {
+    "win": {
+      "requestedExecutionLevel": "highestAvailable"
+    }
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
