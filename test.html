@@ -3,6 +3,10 @@
 <head>
     <meta charset="utf-8">
     <script src="logic.js"></script>
+    <script>
+        let { ipcRenderer } = require('electron');
+        ipcRenderer.on('info' , function(event , data){ console.log(data.msg) });
+    </script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>CS401 Project</title>
@@ -10,27 +14,40 @@
 
 <body>
 
-    <div id="importScreen" class="stitched" ondragover="detectDrop()">
-        <div id="importHeaderContainer">
-            <h1 id="close" onclick="closeAddSim()">X</h1>
-            <h1 id="plus">+</h1>
-            <h1 id="importHeader">Drag .idf and .epw files.</h1>
+    <div id="dashboard"></div>
+
+    <div id="simulationAdditionPanel">
+        <div id="importScreen" class="defaultInvisible" ondragover="detectDrop()">
+            <div id="importHeaderContainer">
+                <h1 id="close" onclick="closeAddSim()">X</h1>
+                <h1 id="plus">+</h1>
+                <h1 id="importHeader">Drag .idf and .epw files.</h1>
+            </div>
         </div>
-    </div>
 
-    <div id="simulations">
-
-    </div>
-
-    <div id="bottomControls">
-        <div onclick="inputControl()">
-            <p id="addSim" class="simButton">Add Simulation &#xFF0B</p>
+        <div id="waitScreen" class="defaultInvisible">
+            <div id="waitHeaderContainer">
+                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                <h1 id="waitHeader">Running simulations...</h1>
+            </div>
         </div>
-        <div
-            onclick="runSelectedSimulations(); let { remote } = require('electron'); remote.getGlobal('RunSimulation')(); ">
-            <p id="runSim" class="simButton" disabled="true">Run &#x25b6</p>
+
+        <div id="simulations">
+
+        </div>
+
+        <div id="bottomControls">
+            <div onclick="inputControl()">
+                <p id="addSim" class="simButton">Add Simulation &#xFF0B</p>
+            </div>
+            <div
+                onclick="runSelectedSimulations();">
+                <p id="runSim" class="simButton" disabled="true">Run &#x25b6</p>
+            </div>
         </div>
     </div>
 </body>
 
 </html>
+<!-- 
+let { remote } = require('electron'); remote.getGlobal('RunSimulation')();  -->

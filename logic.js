@@ -1,13 +1,17 @@
+const exec = require("child_process").exec;
+const papa = require("papaparse");
+const fs = require("fs");
+var sheet = window.document.styleSheets[0];
+
 var isOpen = false;
+var isFinished = false;
 var idf;
 var epw;
-var fs = require("fs");
 
+var parsedSimulations = [];
 var simulationMap = {};
 var simulationCount = 0;
 var data = "";
-
-const exec = require("child_process").exec;
 
 fs.readFile("run.sh", function(err, buf) {
   console.log(buf.toString());
@@ -28,7 +32,48 @@ class SimulationObject {
   }
 }
 
+function parseCSV() {
+  var filePath = simulationMap["Simulation1"].idf.path.replace(
+    simulationMap["Simulation1"].idf.name,
+    ""
+  );
+  var files = fs.readdirSync(filePath + "SimulationResults");
+
+  files.forEach(file => {
+    var individualSims = fs.readdirSync(
+      filePath + "SimulationResults\\" + file
+    );
+    individualSims.forEach(simFile => {
+      if (simFile == "eplusout.csv") {
+        //console.log("CSV for " + file + " is " + simFile);
+        console.log(filePath + "SimulationResults\\" + file + "\\" + simFile)
+        papa.parse(
+          fs.createReadStream(filePath + "SimulationResults\\" + file + "\\" + simFile),
+          {
+            header: true,
+
+            complete: function(results) {
+              parsedSimulations.push(results.data);
+            }
+          }
+        );
+      }
+    });
+  });
+  console.log(sheet)
+  slideToDashboard();
+  
+  console.log(parsedSimulations)
+}
+
+function slideToDashboard() {
+  document.getElementById("dashboard").style = "left: 0px; transition: left 2s;";
+  document.getElementById("simulationAdditionPanel").style = "left: -900px; transition: left 2s; position: fixed;";
+  
+}
+
 function runSelectedSimulations() {
+  waitForSimulations();
   var i = 1;
   var filePath = simulationMap["Simulation" + i].idf.path.replace(
     simulationMap["Simulation" + i].idf.name,
@@ -72,6 +117,38 @@ function runSelectedSimulations() {
 
   i = 1;
   //console.log(simulationMap["Simulation" + i].epw.path);
+
+  if (process.platform == "win32") {
+    var run = exec("run.bat", (error, stdout, stderr) => {
+      console.log(stdout);
+      console.log(stderr);
+      if (error !== null) {
+        console.log(`exec error: ${error} + ${app.getAppPath()}`);
+      } else {
+        console.log("simulation finished");
+        parseCSV();
+        waitForSimulations();
+      }
+    });
+    run.on("exit", code => {
+      console.log(`Child exited with code ${code}`);
+    });
+  } else {
+    var run = exec("run.sh", (error, stdout, stderr) => {
+      console.log(stdout);
+      console.log(stderr);
+      if (error !== null) {
+        console.log(`exec error: ${error}`);
+      } else {
+        console.log("simulation finished");
+        parseCSV();
+        waitForSimulations();
+      }
+    });
+    run.on("exit", code => {
+      console.log(`Child exited with code ${code}`);
+    });
+  }
 }
 
 function isRunnable() {
@@ -84,7 +161,7 @@ function isRunnable() {
 
 function detectDrop() {
   //console.log("DetectDrop initiated");
-  var holder = document.getElementById("importScreen"); 
+  var holder = document.getElementById("importScreen");
   var plusIcon = document.getElementById("plus");
   var importHeader = document.getElementById("importHeader");
 
@@ -198,14 +275,19 @@ function removeSimulation(simId) {
   console.log("Remove Simulation " + simId);
   document.getElementById("sim" + simId).remove();
 
-  if (document.getElementById("sim" + (simId + 1)) != null) {
-    document
-      .getElementById("sim" + (simId + 1))
-      .getElementsByTagName("h2")[0].textContent = "Simulation " + simId;
-    document
-      .getElementById("sim" + (simId + 1))
-      .setAttribute("onclick", "removeSimulation(" + simId + ")");
-    document.getElementById("sim" + (simId + 1)).id = "sim" + simId;
+  for (var i = 0; i < simulationCount - simId; i++) {
+    if (document.getElementById("sim" + (simId + i + 1)) != null) {
+      document
+        .getElementById("sim" + (simId + i + 1))
+        .getElementsByTagName("h2")[0].textContent =
+        "Simulation " + (simId + i);
+      document
+        .getElementById("sim" + (simId + i + 1))
+        .setAttribute("onclick", "removeSimulation(" + (simId + i) + ")");
+      document.getElementById("sim" + (simId + i + 1)).id = "sim" + (simId + i);
+    } else {
+      break;
+    }
   }
 
   simulationCount--;
@@ -241,6 +323,27 @@ function toggleBlur() {
       " filter: blur(8px);-webkit-filter: blur(8px);";
   }
   isOpen = !isOpen;
+}
+
+function waitForSimulations() {
+  if (isFinished) {
+    document.getElementById("waitScreen").style.display = "none";
+    document.getElementById("addSim").style = null;
+    document.getElementById("runSim").style = null;
+    document.getElementById("simulations").style = null;
+    document.getElementById("bottomControls").style = null;
+  } else {
+    document.getElementById("waitScreen").style.display = "table";
+    document.getElementById("addSim").style =
+      " filter: blur(8px);-webkit-filter: blur(8px);";
+    document.getElementById("runSim").style =
+      " filter: blur(8px);-webkit-filter: blur(8px);";
+    document.getElementById("simulations").style =
+      " filter: blur(8px);-webkit-filter: blur(8px);";
+    document.getElementById("bottomControls").style =
+      " filter: blur(8px);-webkit-filter: blur(8px);";
+  }
+  isFinished = !isFinished;
 }
 
 function createSimulationVisualElement() {
