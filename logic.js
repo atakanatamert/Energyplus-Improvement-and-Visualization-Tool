@@ -36,40 +36,121 @@ class SimulationObject {
 function createChart() {
   var options = {
     chart: {
-        height: 350,
-        type: 'area',
+      height: 150,
+      type: 'area',
     },
     dataLabels: {
-        enabled: false
+      enabled: false,
+      style: {
+        colors: ["#F2F2F2"],
+      }
     },
     stroke: {
-        curve: 'smooth'
+      curve: 'smooth'
     },
     series: [{
-        name: 'series1',
-        data: [31, 40, 28, 51, 42, 109, 100]
+      name: 'series1',
+      data: [31, 40, 28, 51, 42, 109, 100]
     }, {
-        name: 'series2',
-        data: [11, 32, 45, 32, 34, 52, 41]
+      name: 'series2',
+      data: [11, 32, 45, 32, 34, 52, 41]
     }],
 
     xaxis: {
-        type: 'datetime',
-        categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00"],                
+      type: 'datetime',
+      labels: {
+        style: {
+          colors: ["#F2F2F2"],
+        }
+      },
+      title: {
+        style: {
+          color: "#F2F2F2",
+        },
+      },
+      axisBorder: {
+        show: true,
+        color: '#78909C',
+        height: 1,
+        width: '100%',
+        offsetX: 0,
+        offsetY: 0
+      },
+
+      categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00"],
     },
     tooltip: {
-        x: {
-            format: 'dd/MM/yy HH:mm'
-        },
+      x: {
+        format: 'dd/MM/yy HH:mm'
+      },
     }
-}
+  }
 
-var chart = new apex(
-    document.getElementById("dashboard"),
+  var chart = new apex(
+    document.getElementById("chart1"),
     options
-);
+  );
 
-chart.render();
+  chart.render();
+  var options2 = {
+    chart: {
+      height: 500,
+      type: 'bar',
+      stacked:'true',
+
+    },
+    dataLabels: {
+      enabled: true,
+      style: {
+        colors: ["#F2F2F2"],
+      }
+    },
+    stroke: {
+      curve: 'smooth'
+    },
+    series: [{
+      name: 'series1',
+      data: [31, 40, 28, 51, 42, 109, 100]
+    }, {
+      name: 'series2',
+      data: [11, 32, 45, 32, 34, 52, 41]
+    }],
+
+    yaxis: {
+      type: 'datetime',
+      labels: {
+        style: {
+          colors: ["#F2F2F2"],
+        }
+      },
+      title: {
+        style: {
+          color: "#F2F2F2",
+        },
+      },
+      axisBorder: {
+        show: true,
+        color: '#78909C',
+        height: 1,
+        width: '100%',
+        offsetX: 0,
+        offsetY: 0
+      },
+
+      categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00"],
+    },
+    tooltip: {
+      x: {
+        format: 'dd/MM/yy HH:mm'
+      },
+    }
+  }
+  var chart2 = new apex(
+    document.getElementById("chart2"),
+    options2
+  );
+  chart2.render();
+
 
 }
 
@@ -409,6 +490,17 @@ function waitForSimulations() {
       " filter: blur(8px);-webkit-filter: blur(8px);";
   }
   isFinished = !isFinished;
+}
+function createChartdiv(){
+
+var counter=0;
+var dashboard = document.getElementById("dashboard")
+for(var i=0; i<5;i++){
+var chart = document.createElement("div")
+chart.id = "chart"+counter; 
+dashboard.appendChild(chart5);
+counter++;
+}
 }
 
 function createSimulationVisualElement() {
