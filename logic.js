@@ -2,6 +2,7 @@ const exec = require("child_process").exec;
 const papa = require("papaparse");
 const fs = require("fs");
 var sheet = window.document.styleSheets[0];
+const apex = require('apexcharts');
 
 var isOpen = false;
 var isFinished = false;
@@ -13,7 +14,7 @@ var simulationMap = {};
 var simulationCount = 0;
 var data = "";
 
-fs.readFile("run.sh", function(err, buf) {
+fs.readFile("run.sh", function (err, buf) {
   console.log(buf.toString());
 });
 
@@ -32,6 +33,10 @@ class SimulationObject {
   }
 }
 
+function createChart() {
+
+}
+
 function parseCSV() {
   var filePath = simulationMap["Simulation1"].idf.path.replace(
     simulationMap["Simulation1"].idf.name,
@@ -40,36 +45,59 @@ function parseCSV() {
   var files = fs.readdirSync(filePath + "SimulationResults");
 
   files.forEach(file => {
-    var individualSims = fs.readdirSync(
-      filePath + "SimulationResults\\" + file
-    );
-    individualSims.forEach(simFile => {
-      if (simFile == "eplusout.csv") {
-        //console.log("CSV for " + file + " is " + simFile);
-        console.log(filePath + "SimulationResults\\" + file + "\\" + simFile)
-        papa.parse(
-          fs.createReadStream(filePath + "SimulationResults\\" + file + "\\" + simFile),
-          {
-            header: true,
+    if (process.platform == "win32") {
+      var individualSims = fs.readdirSync(
+        filePath + "SimulationResults\\" + file
+      );
+      individualSims.forEach(simFile => {
+        if (simFile == "eplusout.csv") {
+          //console.log("CSV for " + file + " is " + simFile);
+          console.log(filePath + "SimulationResults\\" + file + "\\" + simFile)
+          papa.parse(
+            fs.createReadStream(filePath + "SimulationResults\\" + file + "\\" + simFile),
+            {
+              header: true,
 
-            complete: function(results) {
-              parsedSimulations.push(results.data);
+              complete: function (results) {
+                parsedSimulations.push(results.data);
+              }
             }
-          }
-        );
-      }
-    });
+          );
+        }
+      });
+
+    } else {
+      var individualSims = fs.readdirSync(
+        filePath + "SimulationResults/" + file
+      );
+      individualSims.forEach(simFile => {
+        if (simFile == "eplusout.csv") {
+          //console.log("CSV for " + file + " is " + simFile);
+          console.log(filePath + "SimulationResults/" + file + "/" + simFile)
+          papa.parse(
+            fs.createReadStream(filePath + "SimulationResults/" + file + "/" + simFile),
+            {
+              header: true,
+
+              complete: function (results) {
+                parsedSimulations.push(results.data);
+              }
+            }
+          );
+        }
+      });
+    }
   });
   console.log(sheet)
   slideToDashboard();
-  
+
   console.log(parsedSimulations)
 }
 
 function slideToDashboard() {
   document.getElementById("dashboard").style = "left: 0px; transition: left 2s;";
   document.getElementById("simulationAdditionPanel").style = "left: -900px; transition: left 2s; position: fixed;";
-  
+
 }
 
 function runSelectedSimulations() {
@@ -127,6 +155,7 @@ function runSelectedSimulations() {
       } else {
         console.log("simulation finished");
         parseCSV();
+        createChart();
         waitForSimulations();
       }
     });
@@ -134,7 +163,7 @@ function runSelectedSimulations() {
       console.log(`Child exited with code ${code}`);
     });
   } else {
-    var run = exec("run.sh", (error, stdout, stderr) => {
+    var run = exec("sh run.sh", (error, stdout, stderr) => {
       console.log(stdout);
       console.log(stderr);
       if (error !== null) {
