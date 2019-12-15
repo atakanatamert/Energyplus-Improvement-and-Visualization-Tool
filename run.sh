@@ -1,7 +1,7 @@
-cd C:\Users\Burak\Desktop\
+cd C:\Users\Atakan\Desktop\
 mkdir SimulationResults
 cd SimulationResults
 mkdir Simulation1
 cd Simulation1
-energyplus -w C:\Users\Burak\Desktop\weather.epw -r C:\Users\Burak\Desktop\idf.idf
+energyplus -w C:\Users\Atakan\Desktop\StockHolmWeather.epw -r C:\Users\Atakan\Desktop\Datacenter.idf
 cd ..

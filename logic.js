@@ -60,7 +60,7 @@ function createChart() {
       type: 'datetime',
       labels: {
         style: {
-          colors: ["#F2F2F2"],
+          colors: "#F2F2F2",
         }
       },
       title: {
