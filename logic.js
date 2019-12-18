@@ -34,6 +34,8 @@ class SimulationObject {
 }
 
 function createChart() {
+  const data = getData();
+  console.log("X values : \n\n\n\n\n" + data.xs + "Y values : \n\n\n\n\n" + data.ys)
   var options = {
     chart: {
       height: 150,
@@ -50,14 +52,14 @@ function createChart() {
     },
     series: [{
       name: 'series1',
-      data: [31, 40, 28, 51, 42, 109, 100]
+      data: data.ys, //[31, 40, 28, 51, 42, 109, 100]
     }, {
       name: 'series2',
       data: [11, 32, 45, 32, 34, 52, 41]
     }],
 
     xaxis: {
-      type: 'datetime',
+      //type: 'datetime',
       labels: {
         style: {
           colors: ["#F2F2F2"],
@@ -77,13 +79,33 @@ function createChart() {
         offsetY: 0
       },
 
-      categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00"],
+      categories: data.xs,
+
+      // categories: [
+      //   "2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00"
+      // ],
     },
-    tooltip: {
-      x: {
-        format: 'dd/MM/yy HH:mm'
-      },
-    }
+    // tooltip: {
+    //   x: {
+    //     format: 'dd/MM/yy HH:mm'
+    //   },
+    // }
+  }
+
+  function getData() {
+    const xs = [];
+    const ys = [];
+    const data = fs.readFileSync('./eplusout.csv')
+
+    const table = data.toString().split('\n').slice(1);
+    table.forEach(row => {
+      const columns = row.split(',');
+      const time = columns[0];
+      xs.push(time);
+      const temp = columns[1];
+      ys.push(temp);
+    })
+    return { xs, ys };
   }
 
   var chart = new apex(
@@ -92,64 +114,64 @@ function createChart() {
   );
 
   chart.render();
-  var options2 = {
-    chart: {
-      height: 500,
-      type: 'bar',
-      stacked:'true',
+  // var options2 = {
+  //   chart: {
+  //     height: 500,
+  //     type: 'bar',
+  //     stacked:'true',
 
-    },
-    dataLabels: {
-      enabled: true,
-      style: {
-        colors: ["#F2F2F2"],
-      }
-    },
-    stroke: {
-      curve: 'smooth'
-    },
-    series: [{
-      name: 'series1',
-      data: [31, 40, 28, 51, 42, 109, 100]
-    }, {
-      name: 'series2',
-      data: [11, 32, 45, 32, 34, 52, 41]
-    }],
+  //   },
+  //   dataLabels: {
+  //     enabled: true,
+  //     style: {
+  //       colors: ["#F2F2F2"],
+  //     }
+  //   },
+  //   stroke: {
+  //     curve: 'smooth'
+  //   },
+  //   series: [{
+  //     name: 'series1',
+  //     data: [31, 40, 28, 51, 42, 109, 100]
+  //   }, {
+  //     name: 'series2',
+  //     data: [11, 32, 45, 32, 34, 52, 41]
+  //   }],
 
-    yaxis: {
-      type: 'datetime',
-      labels: {
-        style: {
-          colors: ["#F2F2F2"],
-        }
-      },
-      title: {
-        style: {
-          color: "#F2F2F2",
-        },
-      },
-      axisBorder: {
-        show: true,
-        color: '#78909C',
-        height: 1,
-        width: '100%',
-        offsetX: 0,
-        offsetY: 0
-      },
+  //   yaxis: {
+  //     type: 'datetime',
+  //     labels: {
+  //       style: {
+  //         colors: ["#F2F2F2"],
+  //       }
+  //     },
+  //     title: {
+  //       style: {
+  //         color: "#F2F2F2",
+  //       },
+  //     },
+  //     axisBorder: {
+  //       show: true,
+  //       color: '#78909C',
+  //       height: 1,
+  //       width: '100%',
+  //       offsetX: 0,
+  //       offsetY: 0
+  //     },
 
-      categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00"],
-    },
-    tooltip: {
-      x: {
-        format: 'dd/MM/yy HH:mm'
-      },
-    }
-  }
-  var chart2 = new apex(
-    document.getElementById("chart2"),
-    options2
-  );
-  chart2.render();
+  //     categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00"],
+  //   },
+  //   tooltip: {
+  //     x: {
+  //       format: 'dd/MM/yy HH:mm'
+  //     },
+  //   }
+  // }
+  // var chart2 = new apex(
+  //   document.getElementById("chart2"),
+  //   options2
+  // );
+  // chart2.render();
 
 
 }
@@ -218,6 +240,7 @@ function slideToDashboard() {
 }
 
 function runSelectedSimulations() {
+  createChart();
   waitForSimulations();
   var i = 1;
   var filePath = simulationMap["Simulation" + i].idf.path.replace(
@@ -271,7 +294,7 @@ function runSelectedSimulations() {
         console.log(`exec error: ${error} + ${app.getAppPath()}`);
       } else {
         console.log("simulation finished");
-        parseCSV();
+        //parseCSV();
         createChart();
         waitForSimulations();
       }
@@ -491,16 +514,16 @@ function waitForSimulations() {
   }
   isFinished = !isFinished;
 }
-function createChartdiv(){
+function createChartdiv() {
 
-var counter=0;
-var dashboard = document.getElementById("dashboard")
-for(var i=0; i<5;i++){
-var chart = document.createElement("div")
-chart.id = "chart"+counter; 
-dashboard.appendChild(chart5);
-counter++;
-}
+  var counter = 0;
+  var dashboard = document.getElementById("dashboard")
+  for (var i = 0; i < 5; i++) {
+    var chart = document.createElement("div")
+    chart.id = "chart" + counter;
+    dashboard.appendChild(chart5);
+    counter++;
+  }
 }
 
 function createSimulationVisualElement() {

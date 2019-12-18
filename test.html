@@ -5,7 +5,7 @@
     <script src="logic.js"></script>
     <script>
         let { ipcRenderer } = require('electron');
-        ipcRenderer.on('info' , function(event , data){ console.log(data.msg) });
+        ipcRenderer.on('info', function (event, data) { console.log(data.msg) });
     </script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,10 +16,10 @@
 
     <div id="dashboard">
         <div id="chart1">
-        
+
         </div>
         <div>
-        
+
         </div>
     </div>
 
@@ -34,7 +34,12 @@
 
         <div id="waitScreen" class="defaultInvisible">
             <div id="waitHeaderContainer">
-                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                <div class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
                 <h1 id="waitHeader">Running simulations...</h1>
             </div>
         </div>
@@ -47,8 +52,7 @@
             <div onclick="inputControl()">
                 <p id="addSim" class="simButton">Add Simulation &#xFF0B</p>
             </div>
-            <div
-                onclick="runSelectedSimulations();">
+            <div onclick="runSelectedSimulations();">
                 <p id="runSim" class="simButton" disabled="true">Run &#x25b6</p>
             </div>
         </div>
