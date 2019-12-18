@@ -44,7 +44,7 @@ function createChart() {
     dataLabels: {
       enabled: false,
       style: {
-        colors: "#F2F2F2",
+        colors: ["#F2F2F2"],
       }
     },
     stroke: {
@@ -55,7 +55,7 @@ function createChart() {
       data: data.ys, //[31, 40, 28, 51, 42, 109, 100]
     }, {
       name: 'series2',
-      data: [11, 32, 45, 32, 34, 52, 41]
+      data: data.y2s,
     }],
 
     xaxis: {
@@ -95,6 +95,7 @@ function createChart() {
   function getData() {
     const xs = [];
     const ys = [];
+    const y2s = [];
     const data = fs.readFileSync('./eplusout.csv')
 
     const table = data.toString().split('\n').slice(1);
@@ -102,10 +103,12 @@ function createChart() {
       const columns = row.split(',');
       const time = columns[0];
       xs.push(time);
-      const temp = columns[1];
+      const temp = columns[3];
       ys.push(temp);
+      const second= columns[1];
+      y2s.push(second);
     })
-    return { xs, ys };
+    return { xs, ys,y2s };
   }
 
   var chart = new apex(
@@ -114,6 +117,7 @@ function createChart() {
   );
 
   chart.render();
+  slideToDashboard();
   // var options2 = {
   //   chart: {
   //     height: 500,
@@ -295,7 +299,7 @@ function runSelectedSimulations() {
       } else {
         console.log("simulation finished");
         //parseCSV();
-        createChart();
+        //createChart();
         waitForSimulations();
       }
     });
