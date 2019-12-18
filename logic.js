@@ -97,8 +97,12 @@ function createChart() {
     const ys = [];
     const y2s = [];
     const data = fs.readFileSync('./eplusout.csv')
+    
 
     const table = data.toString().split('\n').slice(1);
+    const line= data.toString().split(/\r\n|\n/);
+    const line2=line.toString().split(',');
+    console.log(line2[1]);
     table.forEach(row => {
       const columns = row.split(',');
       const time = columns[0];
@@ -107,6 +111,7 @@ function createChart() {
       ys.push(temp);
       const second= columns[1];
       y2s.push(second);
+      
     })
     return { xs, ys,y2s };
   }
