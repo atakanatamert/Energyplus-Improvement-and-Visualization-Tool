@@ -44,7 +44,7 @@ function createChart() {
     dataLabels: {
       enabled: false,
       style: {
-        colors: ["#F2F2F2"],
+        color: "#F2F2F2",
       }
     },
     stroke: {
@@ -57,12 +57,21 @@ function createChart() {
       name: 'series2',
       data: data.y2s,
     }],
+    
+    yaxis: {
+      labels: {
+        style: {
+          colors: ["#F2F2F2"],
+        }
+      },
+      decimalsInFloat: 2,
+    },
 
     xaxis: {
       //type: 'datetime',
       labels: {
         style: {
-          colors: "#F2F2F2",
+          colors: ["#F2F2F2"],
         }
       },
       title: {
@@ -115,7 +124,7 @@ function createChart() {
     })
     return { xs, ys,y2s };
   }
-
+  
   var chart = new apex(
     document.getElementById("chart1"),
     options
