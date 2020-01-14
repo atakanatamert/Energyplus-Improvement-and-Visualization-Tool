@@ -1,5 +1,5 @@
 const exec = require("child_process").exec;
-const papa = require("papaparse");
+//const papa = require("papaparse");
 const fs = require("fs");
 var sheet = window.document.styleSheets[0];
 const apex = require('apexcharts');
@@ -222,7 +222,7 @@ function createChart() {
 
 }
 
-function parseCSV() {
+function readCSV() {
   var filePath = simulationMap["Simulation1"].idf.path.replace(
     simulationMap["Simulation1"].idf.name,
     ""
@@ -258,17 +258,11 @@ function parseCSV() {
       individualSims.forEach(simFile => {
         if (simFile == "eplusout.csv") {
           //console.log("CSV for " + file + " is " + simFile);
-          console.log(filePath + "SimulationResults/" + file + "/" + simFile)
-          papa.parse(
-            fs.createReadStream(filePath + "SimulationResults/" + file + "/" + simFile),
-            {
-              header: true,
 
-              complete: function (results) {
-                parsedSimulations.push(results.data);
-              }
-            }
-          );
+          var x = fs.createReadStream(filePath + "SimulationResults/" + file + "/" + simFile);
+          console.log("XXXXXXXXXX:" + sim);
+          console.log(filePath + "SimulationResults/" + file + "/" + simFile)
+
         }
       });
     }
@@ -286,7 +280,7 @@ function slideToDashboard() {
 }
 
 function runSelectedSimulations() {
-  createChart();
+  //createChart();
   waitForSimulations();
   var i = 1;
   var filePath = simulationMap["Simulation" + i].idf.path.replace(
@@ -340,7 +334,7 @@ function runSelectedSimulations() {
         console.log(`exec error: ${error} + ${app.getAppPath()}`);
       } else {
         console.log("simulation finished");
-        //parseCSV();
+        //readCSV();
         //createChart();
         waitForSimulations();
       }
@@ -356,14 +350,20 @@ function runSelectedSimulations() {
         console.log(`exec error: ${error}`);
       } else {
         console.log("simulation finished");
-        parseCSV();
+        //readCSV();
         waitForSimulations();
+        readCSV();
       }
     });
     run.on("exit", code => {
       console.log(`Child exited with code ${code}`);
     });
   }
+}
+
+function readCSVfiles() {
+  var path = "";
+  console.log(parsedSimulations);
 }
 
 function isRunnable() {
@@ -560,6 +560,7 @@ function waitForSimulations() {
   }
   isFinished = !isFinished;
 }
+
 function createChartdiv() {
 
   var counter = 0;
