@@ -32,7 +32,6 @@ class SimulationObject {
     return this.epwFile;
   }
 }
-
 function createChart() {
   const data = getData();
   console.log("X values : \n\n\n\n\n" + data.xs + "Y values : \n\n\n\n\n" + data.ys)
@@ -57,7 +56,7 @@ function createChart() {
       name: 'series2',
       data: data.y2s,
     }],
-    
+
     yaxis: {
       labels: {
         style: {
@@ -106,25 +105,54 @@ function createChart() {
     const ys = [];
     const y2s = [];
     const data = fs.readFileSync('./eplusout.csv')
-    
+
 
     const table = data.toString().split('\n').slice(1);
-    const line= data.toString().split(/\r\n|\n/);
-    const line2=line.toString().split(',');
+    const line = data.toString().split(/\r\n|\n/);
+    const line2 = line.toString().split(',');
+
+    var dropdown = document.getElementById("csvOptions");
+
+    for (var i = 1; i < 75; i++) {
+      var opt = document.createElement('option');
+      opt.innerHTML = line2[i];
+      dropdown.appendChild(opt)
+    }
+
+    var selectedVal = dropdown[dropdown.selectedIndex].value;
+    console.log(selectedVal + "################");
+    // line2.forEach(elem => {
+    //   if (elem.startsWith("0")) {
+    //     var opt = document.createElement('option');
+    //     opt.innerHTML = "-----------------------------";
+    //     dropdown.appendChild(opt);
+    //   }
+    //   var opt = document.createElement('option');
+    //   opt.innerHTML = elem;
+    //   dropdown.appendChild(opt)
+    // })
     console.log(line2[1]);
+
+    var x;
+    for (var i = 1; i < 75; i++) {
+      if (selectedVal == line2[i]) {
+        x = i;
+      }
+    }
+
     table.forEach(row => {
       const columns = row.split(',');
       const time = columns[0];
       xs.push(time);
-      const temp = columns[3];
+      const temp = columns[x];
       ys.push(temp);
-      const second= columns[1];
+      const second = columns[1];
       y2s.push(second);
-      
+
     })
-    return { xs, ys,y2s };
+    return { xs, ys, y2s };
   }
-  
+
   var chart = new apex(
     document.getElementById("chart1"),
     options
