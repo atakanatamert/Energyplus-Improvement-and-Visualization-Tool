@@ -3,7 +3,8 @@ const fs = require("fs");
 const apex = require("apexcharts");
 
 var csvFiles = [];
-var isOpen,isFinished = false;
+var isOpen,
+  isFinished = false;
 var idf, epw, chart;
 var simulationMap = {};
 var simulationCount = 0;
@@ -86,7 +87,7 @@ function createChart() {
   var options = {
     chart: {
       height: 150,
-      type: "area"
+      type: "area",
     },
     dataLabels: {
       enabled: false,
@@ -100,18 +101,32 @@ function createChart() {
     series: [
       {
         name: "Simulation 1",
-        data: csvData[0].ys
+        data: csvData[0].ys,
+        style: {
+          color: "#F2F2F2"
+        }
       },
       {
         name: "Simulation 2",
-        data: csvData[1].ys
+        data: csvData[1].ys,
+        style: {
+          color: "#F2F2F2"
+        }
       }
     ],
+    legend: {
+      position: "top",
+      horizontalAlign: "center",
+      labels: {
+        colors: "#F2F2F2",
+        useSeriesColors: false
+      }
+    },
 
     yaxis: {
       labels: {
         style: {
-          colors: ["#F2F2F2"]
+          color: "#F2F2F2"
         }
       },
       decimalsInFloat: 2
@@ -119,10 +134,7 @@ function createChart() {
 
     xaxis: {
       labels: {
-        show: false,
-        style: {
-          colors: ["#F2F2F2"]
-        }
+        show: false
       },
       title: {
         style: {
@@ -137,7 +149,6 @@ function createChart() {
         offsetX: 0,
         offsetY: 0
       },
-
       categories: csvData[0].xs
     }
   };
