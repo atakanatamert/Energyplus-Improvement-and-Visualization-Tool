@@ -1,22 +1,13 @@
 const exec = require("child_process").exec;
-//const papa = require("papaparse");
 const fs = require("fs");
-var sheet = window.document.styleSheets[0];
-const apex = require('apexcharts');
+const apex = require("apexcharts");
 
-var isOpen = false;
-var isFinished = false;
-var idf;
-var epw;
-
-var parsedSimulations = [];
+var csvFiles = [];
+var isOpen,isFinished = false;
+var idf, epw, chart;
 var simulationMap = {};
 var simulationCount = 0;
 var data = "";
-
-fs.readFile("run.sh", function (err, buf) {
-  console.log(buf.toString());
-});
 
 class SimulationObject {
   constructor(idfFile, epwFile) {
@@ -32,197 +23,132 @@ class SimulationObject {
     return this.epwFile;
   }
 }
+
+function getData(dataCSV) {
+  const xs = [];
+  const ys = [];
+
+  const table = dataCSV
+    .toString()
+    .split("\n")
+    .slice(1);
+  const line = dataCSV.toString().split(/\r\n|\n/);
+  const line2 = line.toString().split(",");
+
+  var dropdown = document.getElementById("csvOptions");
+
+  for (var i = 1; i < 75; i++) {
+    var opt = document.createElement("option");
+    opt.innerHTML = line2[i];
+    dropdown.appendChild(opt);
+  }
+
+  var selectedVal = dropdown[dropdown.selectedIndex].value;
+
+  var x;
+  for (var i = 1; i < 75; i++) {
+    if (selectedVal == line2[i]) {
+      x = i;
+    }
+  }
+  var curr = [];
+
+  table.forEach(row => {
+    //console.log("--------------------------------------------------" + row);
+    if (row.includes("07/") || row.includes("Date")) {
+      curr.push(row);
+    }
+  });
+
+  curr.forEach(row => {
+    const columns = row.split(",");
+    const time = columns[0];
+    xs.push(time);
+    const temp = columns[x];
+    ys.push(temp);
+  });
+
+  return { xs, ys };
+}
+
+function changeChart() {
+  chart.destroy();
+  createChart();
+}
+
 function createChart() {
-  const data = getData();
-  console.log("X values : \n\n\n\n\n" + data.xs + "Y values : \n\n\n\n\n" + data.ys)
+  const csvData = [];
+
+  csvFiles.forEach(file => {
+    csvData.push(getData(file));
+  });
+
   var options = {
     chart: {
       height: 150,
-      type: 'area',
+      type: "area"
     },
     dataLabels: {
       enabled: false,
       style: {
-        color: "#F2F2F2",
+        color: "#F2F2F2"
       }
     },
     stroke: {
-      curve: 'smooth'
+      curve: "smooth"
     },
-    series: [{
-      name: 'series1',
-      data: data.ys, //[31, 40, 28, 51, 42, 109, 100]
-    }, {
-      name: 'series2',
-      data: data.y2s,
-    }],
+    series: [
+      {
+        name: "Simulation 1",
+        data: csvData[0].ys
+      },
+      {
+        name: "Simulation 2",
+        data: csvData[1].ys
+      }
+    ],
 
     yaxis: {
       labels: {
         style: {
-          colors: ["#F2F2F2"],
+          colors: ["#F2F2F2"]
         }
       },
-      decimalsInFloat: 2,
+      decimalsInFloat: 2
     },
 
     xaxis: {
-      //type: 'datetime',
       labels: {
+        show: false,
         style: {
-          colors: ["#F2F2F2"],
+          colors: ["#F2F2F2"]
         }
       },
       title: {
         style: {
-          color: "#F2F2F2",
-        },
+          color: "#F2F2F2"
+        }
       },
       axisBorder: {
         show: true,
-        color: '#78909C',
+        color: "#78909C",
         height: 1,
-        width: '100%',
+        width: "100%",
         offsetX: 0,
         offsetY: 0
       },
 
-      categories: data.xs,
-
-      // categories: [
-      //   "2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00"
-      // ],
-    },
-    // tooltip: {
-    //   x: {
-    //     format: 'dd/MM/yy HH:mm'
-    //   },
-    // }
-  }
-
-  function getData() {
-    const xs = [];
-    const ys = [];
-    const y2s = [];
-    const data = fs.readFileSync('./eplusout.csv')
-
-
-    const table = data.toString().split('\n').slice(1);
-    const line = data.toString().split(/\r\n|\n/);
-    const line2 = line.toString().split(',');
-
-    var dropdown = document.getElementById("csvOptions");
-
-    for (var i = 1; i < 75; i++) {
-      var opt = document.createElement('option');
-      opt.innerHTML = line2[i];
-      dropdown.appendChild(opt)
+      categories: csvData[0].xs
     }
+  };
 
-    var selectedVal = dropdown[dropdown.selectedIndex].value;
-    console.log(selectedVal + "################");
-    // line2.forEach(elem => {
-    //   if (elem.startsWith("0")) {
-    //     var opt = document.createElement('option');
-    //     opt.innerHTML = "-----------------------------";
-    //     dropdown.appendChild(opt);
-    //   }
-    //   var opt = document.createElement('option');
-    //   opt.innerHTML = elem;
-    //   dropdown.appendChild(opt)
-    // })
-    console.log(line2[1]);
-
-    var x;
-    for (var i = 1; i < 75; i++) {
-      if (selectedVal == line2[i]) {
-        x = i;
-      }
-    }
-
-    table.forEach(row => {
-      const columns = row.split(',');
-      const time = columns[0];
-      xs.push(time);
-      const temp = columns[x];
-      ys.push(temp);
-      const second = columns[1];
-      y2s.push(second);
-
-    })
-    return { xs, ys, y2s };
-  }
-
-  var chart = new apex(
-    document.getElementById("chart1"),
-    options
-  );
+  chart = new apex(document.getElementById("chart1"), options);
 
   chart.render();
   slideToDashboard();
-  // var options2 = {
-  //   chart: {
-  //     height: 500,
-  //     type: 'bar',
-  //     stacked:'true',
-
-  //   },
-  //   dataLabels: {
-  //     enabled: true,
-  //     style: {
-  //       colors: ["#F2F2F2"],
-  //     }
-  //   },
-  //   stroke: {
-  //     curve: 'smooth'
-  //   },
-  //   series: [{
-  //     name: 'series1',
-  //     data: [31, 40, 28, 51, 42, 109, 100]
-  //   }, {
-  //     name: 'series2',
-  //     data: [11, 32, 45, 32, 34, 52, 41]
-  //   }],
-
-  //   yaxis: {
-  //     type: 'datetime',
-  //     labels: {
-  //       style: {
-  //         colors: ["#F2F2F2"],
-  //       }
-  //     },
-  //     title: {
-  //       style: {
-  //         color: "#F2F2F2",
-  //       },
-  //     },
-  //     axisBorder: {
-  //       show: true,
-  //       color: '#78909C',
-  //       height: 1,
-  //       width: '100%',
-  //       offsetX: 0,
-  //       offsetY: 0
-  //     },
-
-  //     categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00"],
-  //   },
-  //   tooltip: {
-  //     x: {
-  //       format: 'dd/MM/yy HH:mm'
-  //     },
-  //   }
-  // }
-  // var chart2 = new apex(
-  //   document.getElementById("chart2"),
-  //   options2
-  // );
-  // chart2.render();
-
-
 }
 
-function readCSV() {
+function readCSVDirectories() {
   var filePath = simulationMap["Simulation1"].idf.path.replace(
     simulationMap["Simulation1"].idf.name,
     ""
@@ -237,20 +163,14 @@ function readCSV() {
       individualSims.forEach(simFile => {
         if (simFile == "eplusout.csv") {
           //console.log("CSV for " + file + " is " + simFile);
-          console.log(filePath + "SimulationResults\\" + file + "\\" + simFile)
-          papa.parse(
-            fs.createReadStream(filePath + "SimulationResults\\" + file + "\\" + simFile),
-            {
-              header: true,
+          //console.log(filePath + "SimulationResults\\" + file + "\\" + simFile);
 
-              complete: function (results) {
-                parsedSimulations.push(results.data);
-              }
-            }
+          var currFile = fs.readFileSync(
+            filePath + "SimulationResults\\" + file + "\\" + simFile
           );
+          csvFiles.push(currFile);
         }
       });
-
     } else {
       var individualSims = fs.readdirSync(
         filePath + "SimulationResults/" + file
@@ -259,28 +179,26 @@ function readCSV() {
         if (simFile == "eplusout.csv") {
           //console.log("CSV for " + file + " is " + simFile);
 
-          var x = fs.createReadStream(filePath + "SimulationResults/" + file + "/" + simFile);
+          var x = fs.createReadStream(
+            filePath + "SimulationResults/" + file + "/" + simFile
+          );
           console.log("XXXXXXXXXX:" + sim);
-          console.log(filePath + "SimulationResults/" + file + "/" + simFile)
-
+          console.log(filePath + "SimulationResults/" + file + "/" + simFile);
         }
       });
     }
   });
-  console.log(sheet)
   slideToDashboard();
-
-  console.log(parsedSimulations)
 }
 
 function slideToDashboard() {
-  document.getElementById("dashboard").style = "left: 0px; transition: left 2s;";
-  document.getElementById("simulationAdditionPanel").style = "left: -900px; transition: left 2s; position: fixed;";
-
+  document.getElementById("dashboard").style =
+    "left: 0px; transition: left 2s;";
+  document.getElementById("simulationAdditionPanel").style =
+    "left: -900px; transition: left 2s; position: fixed;";
 }
 
 function runSelectedSimulations() {
-  //createChart();
   waitForSimulations();
   var i = 1;
   var filePath = simulationMap["Simulation" + i].idf.path.replace(
@@ -334,9 +252,11 @@ function runSelectedSimulations() {
         console.log(`exec error: ${error} + ${app.getAppPath()}`);
       } else {
         console.log("simulation finished");
-        //readCSV();
+        //readCSVDirectories();
         //createChart();
         waitForSimulations();
+        readCSVDirectories();
+        createChart();
       }
     });
     run.on("exit", code => {
@@ -350,20 +270,15 @@ function runSelectedSimulations() {
         console.log(`exec error: ${error}`);
       } else {
         console.log("simulation finished");
-        //readCSV();
+        //readCSVDirectories();
         waitForSimulations();
-        readCSV();
+        readCSVDirectories();
       }
     });
     run.on("exit", code => {
       console.log(`Child exited with code ${code}`);
     });
   }
-}
-
-function readCSVfiles() {
-  var path = "";
-  console.log(parsedSimulations);
 }
 
 function isRunnable() {
@@ -559,18 +474,6 @@ function waitForSimulations() {
       " filter: blur(8px);-webkit-filter: blur(8px);";
   }
   isFinished = !isFinished;
-}
-
-function createChartdiv() {
-
-  var counter = 0;
-  var dashboard = document.getElementById("dashboard")
-  for (var i = 0; i < 5; i++) {
-    var chart = document.createElement("div")
-    chart.id = "chart" + counter;
-    dashboard.appendChild(chart5);
-    counter++;
-  }
 }
 
 function createSimulationVisualElement() {

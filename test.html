@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <script src="logic.js"></script>
-    <script>
+    <!-- <script>
         let { ipcRenderer } = require('electron');
         ipcRenderer.on('info', function (event, data) { console.log(data.msg) });
-    </script>
+    </script> -->
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>CS401 Project</title>
+    <title>CASTE: CS401 Project</title>
 </head>
 
 <body>
@@ -19,7 +19,8 @@
 
         </div>
         <div>
-            <select id="csvOptions" onchange="createChart()">
+            <select id="csvOptions" onchange="changeChart()">
+                
             </select>
         </div>
     </div>
@@ -61,5 +62,3 @@
 </body>
 
 </html>
-<!-- 
-let { remote } = require('electron'); remote.getGlobal('RunSimulation')();  -->
