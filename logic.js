@@ -26,6 +26,21 @@ class SimulationObject {
   }
 }
 
+function startIDFEditor() {
+  for (var i = 1; i < simulationCount + 1; i++) {
+    var command = "IDFEditor " + simulationMap["Simulation" + i].idf.path;
+    var run = exec(command, (error, stdout, stderr) => {
+      console.log(stdout);
+      console.log(stderr);
+      if (error !== null) {
+        console.log(`exec error: ${error}`);
+      } else {
+        console.log("Editor started!");
+      }
+    });
+  }
+}
+
 function startVisualization() {
   fetchCoordinates = "python main.py ";
   var result = findRemoveSync(__dirname, { prefix: "coordinates" });

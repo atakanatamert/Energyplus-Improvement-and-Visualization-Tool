@@ -1,12 +1,221 @@
-Program Version,EnergyPlus, Version 9.2.0-921312fa1d, YMD=2020.06.07 16:25,
-   ** Severe  ** Line: 1056 You must run the ExpandObjects program for "HVACTemplate:Thermostat"
-   ** Severe  ** Line: 1065 You must run the ExpandObjects program for "HVACTemplate:Zone:IdealLoadsAirSystem"
+Program Version,EnergyPlus, Version 9.2.0-921312fa1d, YMD=2020.06.07 22:38,
+   ** Severe  ** Line: 102 Index: 14 - "ProgramControl" is not a valid Object Type.
+   ** Severe  ** Line: 1266 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           4.2062764955,-4.3620002541,
+   ** Severe  ** Line: 1266 Index: 24 - "12.71659973" is not a valid Object Type.
+   ** Severe  ** Line: 1281 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           3.570569083,-4.8410403998,
+   ** Severe  ** Line: 1281 Index: 24 - "12.71659973" is not a valid Object Type.
+   ** Severe  ** Line: 1622 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           3.0131522221,-2.7786545826,
+   ** Severe  ** Line: 1622 Index: 24 - "12.71659973" is not a valid Object Type.
+   ** Severe  ** Line: 1637 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           2.3774386167,-3.25769977,
+   ** Severe  ** Line: 1637 Index: 24 - "12.71659973" is not a valid Object Type.
+   ** Severe  ** Line: 1948 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           .7939206958,-4.617502223,
+   ** Severe  ** Line: 1948 Index: 24 - "12.75059973" is not a valid Object Type.
+   ** Severe  ** Line: 1963 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           1.8326537058,-5.9959474783,
+   ** Severe  ** Line: 1963 Index: 24 - "12.75059973" is not a valid Object Type.
+   ** Severe  ** Line: 2289 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           13.7313401133,-11.4805445151,
+   ** Severe  ** Line: 2289 Index: 26 - "12.7285997344" is not a valid Object Type.
+   ** Severe  ** Line: 2305 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           13.7301344295,-11.4789487917,
+   ** Severe  ** Line: 2305 Index: 26 - "10.5765997344" is not a valid Object Type.
+   ** Severe  ** Line: 2561 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           3.3859377864,-.4818054811,
+   ** Severe  ** Line: 2561 Index: 24 - "13.57659973" is not a valid Object Type.
+   ** Severe  ** Line: 2637 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           3.3859377864,-.4818054811,
+   ** Severe  ** Line: 2637 Index: 24 - "16.27659973" is not a valid Object Type.
+   ** Severe  ** Line: 2668 Index: 13 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           4.5838909271, .42091235,
+   ** Severe  ** Line: 2668 Index: 25 - "16.27659973" is not a valid Object Type.
+   ** Severe  ** Line: 2727 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           2.9073895355,-2.7081042904,
+   ** Severe  ** Line: 2727 Index: 26 - "15.7155997283" is not a valid Object Type.
+   ** Severe  ** Line: 2742 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           2.2732741,-3.1859337807,
+   ** Severe  ** Line: 2742 Index: 26 - "15.7155997283" is not a valid Object Type.
+   ** Severe  ** Line: 2827 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           10.6412602212,-17.6155760852,
+   ** Severe  ** Line: 2827 Index: 25 - "12.126599734" is not a valid Object Type.
+   ** Severe  ** Line: 2843 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           10.6412602208,-17.6155760846,
+   ** Severe  ** Line: 2843 Index: 25 - "13.114599724" is not a valid Object Type.
+   ** Severe  ** Line: 2859 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           11.9198769416,-16.6520683777,
+   ** Severe  ** Line: 2859 Index: 25 - "13.114599724" is not a valid Object Type.
+   ** Severe  ** Line: 2875 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           10.6412602218,-17.615576086,
+   ** Severe  ** Line: 2875 Index: 25 - "10.576599734" is not a valid Object Type.
+   ** Severe  ** Line: 2891 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           11.9198769427,-16.6520683791,
+   ** Severe  ** Line: 2891 Index: 25 - "10.576599734" is not a valid Object Type.
+   ** Severe  ** Line: 2907 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           11.9182796716,-16.653272009,
+   ** Severe  ** Line: 2907 Index: 25 - "12.128599734" is not a valid Object Type.
+   ** Severe  ** Line: 2938 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           5.5046642302,-.6231957033,
+   ** Severe  ** Line: 2938 Index: 24 - "13.57659973" is not a valid Object Type.
+   ** Severe  ** Line: 2954 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           5.5046642302,-.6231957033,
+   ** Severe  ** Line: 2954 Index: 24 - "16.27659973" is not a valid Object Type.
+   ** Severe  ** Line: 2985 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           5.887248171,-6.2537460292,
+   ** Severe  ** Line: 2985 Index: 24 - "16.71123273" is not a valid Object Type.
+   ** Severe  ** Line: 3016 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           7.1658631745,-5.2902360266,
+   ** Severe  ** Line: 3016 Index: 24 - "16.27659973" is not a valid Object Type.
+   ** Severe  ** Line: 3062 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           5.2154560669,-10.4850755421,
+   ** Severe  ** Line: 3062 Index: 26 - "12.7285997275" is not a valid Object Type.
+   ** Severe  ** Line: 3078 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           5.2166588573,-10.4866734459,
+   ** Severe  ** Line: 3078 Index: 26 - "10.5765997275" is not a valid Object Type.
+   ** Severe  ** Line: 3454 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           2.8822147314,-7.3887666993,
+   ** Severe  ** Line: 3454 Index: 26 - "11.5798854341" is not a valid Object Type.
+   ** Severe  ** Line: 3484 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           2.8834178818,-7.3903643317,
+   ** Severe  ** Line: 3484 Index: 26 - "12.7675997341" is not a valid Object Type.
+   ** Severe  ** Line: 3902 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -6.0834873845,-15.1929452943,
+   ** Severe  ** Line: 3902 Index: 25 - "13.2765997274" is not a valid Object Type.
+   ** Severe  ** Line: 3918 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -4.9661973841,-14.3510052941,
+   ** Severe  ** Line: 3918 Index: 25 - "13.2765997274" is not a valid Object Type.
+   ** Severe  ** Line: 3949 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -7.0248632463,-14.0134850357,
+   ** Severe  ** Line: 3949 Index: 25 - "13.2765997294" is not a valid Object Type.
+   ** Severe  ** Line: 3965 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -7.927587536,-12.8155282724,
+   ** Severe  ** Line: 3965 Index: 25 - "13.2765997294" is not a valid Object Type.
+   ** Severe  ** Line: 3996 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -.5381021734,-3.3749285391,
+   ** Severe  ** Line: 3996 Index: 23 - "13.27659973" is not a valid Object Type.
+   ** Severe  ** Line: 4012 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -1.5164305665,-4.1121506716,
+   ** Severe  ** Line: 4012 Index: 23 - "13.27659973" is not a valid Object Type.
+   ** Severe  ** Line: 4028 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -8.7041521166,-9.5284786103,
+   ** Severe  ** Line: 4028 Index: 23 - "13.27659973" is not a valid Object Type.
+   ** Severe  ** Line: 4377 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -.2386123926,-3.1492382519,
+   ** Severe  ** Line: 4377 Index: 25 - "16.1883647249" is not a valid Object Type.
+   ** Severe  ** Line: 4422 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -4.8747169837,-6.8969804763,
+   ** Severe  ** Line: 4422 Index: 25 - "15.7165997343" is not a valid Object Type.
+   ** Severe  ** Line: 4437 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -4.3956715751,-7.5326939149,
+   ** Severe  ** Line: 4437 Index: 25 - "15.7165997343" is not a valid Object Type.
+   ** Severe  ** Line: 4626 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           .9913822275,-4.151914588,
+   ** Severe  ** Line: 4626 Index: 26 - "15.6425997306" is not a valid Object Type.
+   ** Severe  ** Line: 4641 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           .3692470956,-4.6207277461,
+   ** Severe  ** Line: 4641 Index: 26 - "15.6425997306" is not a valid Object Type.
+   ** Severe  ** Line: 4710 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -3.2900187124,-7.3781866184,
+   ** Severe  ** Line: 4710 Index: 25 - "15.7155997306" is not a valid Object Type.
+   ** Severe  ** Line: 4725 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -3.9241334263,-7.8560270527,
+   ** Severe  ** Line: 4725 Index: 25 - "15.7155997306" is not a valid Object Type.
+   ** Severe  ** Line: 4764 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -1.6280629022,-6.1258110629,
+   ** Severe  ** Line: 4764 Index: 25 - "15.6425997306" is not a valid Object Type.
+   ** Severe  ** Line: 4779 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -2.250191653,-6.5946194126,
+   ** Severe  ** Line: 4779 Index: 25 - "15.6425997306" is not a valid Object Type.
+   ** Severe  ** Line: 4848 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           .3644552851,-4.6243386397,
+   ** Severe  ** Line: 4848 Index: 26 - "15.6425997306" is not a valid Object Type.
+   ** Severe  ** Line: 4863 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -.513245346,-5.2857345064,
+   ** Severe  ** Line: 4863 Index: 25 - "15.6425997306" is not a valid Object Type.
+   ** Severe  ** Line: 4902 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -.7455640796,-5.4607994941,
+   ** Severe  ** Line: 4902 Index: 25 - "15.6425997306" is not a valid Object Type.
+   ** Severe  ** Line: 4917 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -1.6232710838,-6.1222001633,
+   ** Severe  ** Line: 4917 Index: 25 - "15.6425997306" is not a valid Object Type.
+   ** Severe  ** Line: 5140 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           4.6302964169,-7.2460003394,
+   ** Severe  ** Line: 5140 Index: 26 - "16.2765997294" is not a valid Object Type.
+   ** Severe  ** Line: 5185 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           3.3566947776,-7.9502966702,
+   ** Severe  ** Line: 5185 Index: 26 - "15.7155997285" is not a valid Object Type.
+   ** Severe  ** Line: 5200 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           2.8788539502,-7.3161797733,
+   ** Severe  ** Line: 5200 Index: 26 - "15.7155997285" is not a valid Object Type.
+   ** Severe  ** Line: 5514 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -.0183658634,-6.4398785319,
+   ** Severe  ** Line: 5514 Index: 25 - "19.5881149882" is not a valid Object Type.
+   ** Severe  ** Line: 5576 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -.6525308546,-7.4153933773,
+   ** Severe  ** Line: 5576 Index: 24 - "15.715599728" is not a valid Object Type.
+   ** Severe  ** Line: 5591 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -1.1303732496,-6.7812776617,
+   ** Severe  ** Line: 5591 Index: 24 - "15.715599728" is not a valid Object Type.
+   ** Severe  ** Line: 5903 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -.0329363161,-10.759996704,
+   ** Severe  ** Line: 5903 Index: 25 - "16.2765997325" is not a valid Object Type.
+   ** Severe  ** Line: 6427 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -7.4263316789,-8.5655791934,
+   ** Severe  ** Line: 6427 Index: 25 - "16.1883647288" is not a valid Object Type.
+   ** Severe  ** Line: 6458 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -4.8247470073,-14.3708857941,
+   ** Severe  ** Line: 6458 Index: 24 - "16.276599733" is not a valid Object Type.
+   ** Severe  ** Line: 6489 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -9.7234878465,-10.3492085766,
+   ** Severe  ** Line: 6489 Index: 25 - "15.6765997284" is not a valid Object Type.
+   ** Severe  ** Line: 6520 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -8.7599852997,-11.6278165813,
+   ** Severe  ** Line: 6520 Index: 25 - "15.6765997284" is not a valid Object Type.
+   ** Severe  ** Line: 6551 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -7.8572638722,-12.8257655094,
+   ** Severe  ** Line: 6551 Index: 25 - "15.6765997284" is not a valid Object Type.
+   ** Severe  ** Line: 6582 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -6.9545376423,-14.0237208106,
+   ** Severe  ** Line: 6582 Index: 25 - "15.6765997284" is not a valid Object Type.
+   ** Severe  ** Line: 6658 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -8.7599852598,-11.6278165512,
+   ** Severe  ** Line: 6658 Index: 25 - "16.5765997284" is not a valid Object Type.
+   ** Severe  ** Line: 6689 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -7.8572638323,-12.8257654793,
+   ** Severe  ** Line: 6689 Index: 25 - "16.5765997284" is not a valid Object Type.
+   ** Severe  ** Line: 6927 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -3.6963658111,-12.5151171081,
+   ** Severe  ** Line: 6927 Index: 25 - "15.6435997284" is not a valid Object Type.
+   ** Severe  ** Line: 6942 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -4.831386279,-11.0088899422,
+   ** Severe  ** Line: 6942 Index: 25 - "15.6435997284" is not a valid Object Type.
+   ** Severe  ** Line: 7164 Index: 11 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~          -2.8281562659,-12.8663467738,
+   ** Severe  ** Line: 7164 Index: 25 - "16.2765997311" is not a valid Object Type.
+   ** Severe  ** Line: 7439 Index: 12 - Error parsing "FenestrationSurface:Detailed". Error in following line.
+   ** Severe  ** ~~~           1.75670983,-7.7113748504,
+   ** Severe  ** Line: 7439 Index: 26 - "18.0246739526" is not a valid Object Type.
+   ** Severe  ** <root>[FenestrationSurface:Detailed][EntryHall201:Zone1_Wall_12_0_1_0_1_1_Win][number_of_vertices] - "1" - Expected number greater than or equal to 3.000000
+   ** Severe  ** <root>[FenestrationSurface:Detailed][EntryHall201:Zone1_Wall_12_0_1_0_1_1_Win][number_of_vertices] - Failed to validate against child schema #0.
+   ** Severe  ** <root>[FenestrationSurface:Detailed][EntryHall201:Zone1_Wall_12_0_1_0_1_1_Win][number_of_vertices] - "1" - Failed to match against any enum values.
+   ** Severe  ** <root>[FenestrationSurface:Detailed][EntryHall201:Zone1_Wall_12_0_1_0_1_1_Win][number_of_vertices] - Failed to validate against child schema #1.
+   ** Severe  ** <root>[FenestrationSurface:Detailed][EntryHall201:Zone1_Wall_12_0_1_0_1_1_Win][number_of_vertices] - Failed to validate against any child schemas allowed by anyOf constraint.
+   ** Severe  ** <root>[RunPeriod][Untitled (17-08:23-08)][day_of_week_for_start_day] - "No" - Failed to match against any enum values.
+   ** Severe  ** <root>[RunPeriod][Untitled (17-08:23-08)][end_day_of_month] - Value type "string" for input "UseWeatherFile" not permitted by 'type' constraint.
+   ** Severe  ** <root>[RunPeriod][Untitled (17-08:23-08)][end_month] - "23" - Expected number less than or equal to 12.000000
+   ** Severe  ** <root>[RunPeriod][Untitled (17-08:23-08)][end_year] - Value type "string" for input "No" not permitted by 'type' constraint.
+   ** Severe  ** <root>[RunPeriod][Untitled (17-08:23-08)][use_weather_file_rain_indicators] - "1" - Failed to match against any enum values.
+   ** Severe  ** <root>[ZoneHVAC:EquipmentList][Bath203:Zone1 Equipment][equipment][0][zone_equipment_object_type] - "Bath203:Zone1 Ideal Loads Air" - Failed to match against any enum values.
+   ** Warning ** Version: in IDF="8.3.0.001" not the same as expected="9.2"
    **  Fatal  ** Errors occurred on processing input file. Preceding condition(s) cause termination.
    ...Summary of Errors that led to program termination:
-   ..... Reference severe error count=2
-   ..... Last severe error=Line: 1065 You must run the ExpandObjects program for "HVACTemplate:Zone:IdealLoadsAirSystem"
+   ..... Reference severe error count=210
+   ..... Last severe error=<root>[ZoneHVAC:EquipmentList][Bath203:Zone1 Equipment][equipment][0][zone_equipment_object_type] - "Bath203:Zone1 Ideal Loads Air" - Failed to match against any enum values.
    ************* Warning:  Node connection errors not checked - most system input has not been read (see previous warning).
    ************* Fatal error -- final processing.  Program exited before simulations began.  See previous error messages.
    ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 0 Severe Errors.
    ************* EnergyPlus Sizing Error Summary. During Sizing: 0 Warning; 0 Severe Errors.
-   ************* EnergyPlus Terminated--Fatal Error Detected. 0 Warning; 2 Severe Errors; Elapsed Time=00hr 00min  0.21sec
+   ************* EnergyPlus Terminated--Fatal Error Detected. 1 Warning; 210 Severe Errors; Elapsed Time=00hr 00min  0.30sec
