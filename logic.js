@@ -1,6 +1,7 @@
 const exec = require("child_process").exec;
 const fs = require("fs");
 const apex = require("apexcharts");
+const findRemoveSync = require("find-remove");
 
 var csvFiles = [];
 var isOpen,
@@ -25,14 +26,45 @@ class SimulationObject {
   }
 }
 
+function startVisualization() {
+  fetchCoordinates = "python main.py ";
+  var result = findRemoveSync(__dirname, { prefix: "coordinates" });
+
+  for (var i = 1; i < simulationCount + 1; i++) {
+    fetchCoordinates += simulationMap["Simulation" + i].idf.name + " ";
+  }
+
+  var run = exec(fetchCoordinates, (error, stdout, stderr) => {
+    console.log(stdout);
+    console.log(stderr);
+    if (error !== null) {
+      console.log(`exec error: ${error}`);
+    } else {
+      console.log("Coordinates found!");
+    }
+  });
+
+  for (var i = 0; i < simulationCount; i++) {
+    var sub = __dirname + "\\coordinates" + i + ".txt";
+    var visualizeUnity = '.\\Test.exe --inputDir "' + sub + '"';
+    console.log(visualizeUnity);
+    var runUnity = exec(visualizeUnity, (error, stdout, stderr) => {
+      console.log(stdout);
+      console.log(stderr);
+      if (error !== null) {
+        console.log(`exec error: ${error}`);
+      } else {
+        console.log("Coordinates found!");
+      }
+    });
+  }
+}
+
 function getData(dataCSV) {
   const xs = [];
   const ys = [];
 
-  const table = dataCSV
-    .toString()
-    .split("\n")
-    .slice(1);
+  const table = dataCSV.toString().split("\n").slice(1);
   const line = dataCSV.toString().split(/\r\n|\n/);
   const line2 = line.toString().split(",");
 
@@ -54,14 +86,14 @@ function getData(dataCSV) {
   }
   var curr = [];
 
-  table.forEach(row => {
+  table.forEach((row) => {
     //console.log("--------------------------------------------------" + row);
     if (row.includes("07/") || row.includes("Date")) {
       curr.push(row);
     }
   });
 
-  curr.forEach(row => {
+  curr.forEach((row) => {
     const columns = row.split(",");
     const time = columns[0];
     xs.push(time);
@@ -80,7 +112,7 @@ function changeChart() {
 function createChart() {
   const csvData = [];
 
-  csvFiles.forEach(file => {
+  csvFiles.forEach((file) => {
     csvData.push(getData(file));
   });
 
@@ -92,54 +124,39 @@ function createChart() {
     dataLabels: {
       enabled: false,
       style: {
-        color: "#F2F2F2"
-      }
+        color: "#F2F2F2",
+      },
     },
     stroke: {
-      curve: "smooth"
+      curve: "smooth",
     },
-    series: [
-      {
-        name: "Simulation 1",
-        data: csvData[0].ys,
-        style: {
-          color: "#F2F2F2"
-        }
-      },
-      {
-        name: "Simulation 2",
-        data: csvData[1].ys,
-        style: {
-          color: "#F2F2F2"
-        }
-      }
-    ],
+    series: [],
     legend: {
       position: "top",
       horizontalAlign: "center",
       labels: {
         colors: "#F2F2F2",
-        useSeriesColors: false
-      }
+        useSeriesColors: false,
+      },
     },
 
     yaxis: {
       labels: {
         style: {
-          color: "#F2F2F2"
-        }
+          color: "#F2F2F2",
+        },
       },
-      decimalsInFloat: 2
+      decimalsInFloat: 2,
     },
 
     xaxis: {
       labels: {
-        show: false
+        show: false,
       },
       title: {
         style: {
-          color: "#F2F2F2"
-        }
+          color: "#F2F2F2",
+        },
       },
       axisBorder: {
         show: true,
@@ -147,11 +164,21 @@ function createChart() {
         height: 1,
         width: "100%",
         offsetX: 0,
-        offsetY: 0
+        offsetY: 0,
       },
-      categories: csvData[0].xs
-    }
+      categories: csvData[0].xs,
+    },
   };
+
+  for (var i = 0; i < simulationCount; i++) {
+    options.series[i] = {
+      name: "Simulation " + (i + 1),
+      data: csvData[i].ys,
+      style: {
+        color: "#F2F2F2",
+      },
+    };
+  }
 
   chart = new apex(document.getElementById("chart1"), options);
 
@@ -166,12 +193,12 @@ function readCSVDirectories() {
   );
   var files = fs.readdirSync(filePath + "SimulationResults");
 
-  files.forEach(file => {
+  files.forEach((file) => {
     if (process.platform == "win32") {
       var individualSims = fs.readdirSync(
         filePath + "SimulationResults\\" + file
       );
-      individualSims.forEach(simFile => {
+      individualSims.forEach((simFile) => {
         if (simFile == "eplusout.csv") {
           //console.log("CSV for " + file + " is " + simFile);
           //console.log(filePath + "SimulationResults\\" + file + "\\" + simFile);
@@ -186,7 +213,7 @@ function readCSVDirectories() {
       var individualSims = fs.readdirSync(
         filePath + "SimulationResults/" + file
       );
-      individualSims.forEach(simFile => {
+      individualSims.forEach((simFile) => {
         if (simFile == "eplusout.csv") {
           //console.log("CSV for " + file + " is " + simFile);
 
@@ -243,11 +270,11 @@ function runSelectedSimulations() {
       "\n";
   }
 
-  fs.writeFile("run.sh", data, err => {
+  fs.writeFile("run.sh", data, (err) => {
     if (err) console.log(err);
     console.log("Successfully Written to File.");
   });
-  fs.writeFile("run.bat", data, err => {
+  fs.writeFile("run.bat", data, (err) => {
     if (err) console.log(err);
     console.log("Successfully Written to File.");
   });
@@ -270,7 +297,7 @@ function runSelectedSimulations() {
         createChart();
       }
     });
-    run.on("exit", code => {
+    run.on("exit", (code) => {
       console.log(`Child exited with code ${code}`);
     });
   } else {
@@ -286,7 +313,7 @@ function runSelectedSimulations() {
         readCSVDirectories();
       }
     });
-    run.on("exit", code => {
+    run.on("exit", (code) => {
       console.log(`Child exited with code ${code}`);
     });
   }
@@ -327,7 +354,7 @@ function detectDrop() {
     return false;
   };
 
-  holder.ondrop = e => {
+  holder.ondrop = (e) => {
     e.preventDefault();
 
     if (e.dataTransfer.files.length > 1) {
@@ -337,40 +364,20 @@ function detectDrop() {
       importHeader.style.color = "#F2F2F2";
 
       for (var i = 0; i < e.dataTransfer.files.length; i++) {
-        if (
-          e.dataTransfer.files[i].name
-            .split(".")
-            .pop()
-            .includes("idf")
-        ) {
+        if (e.dataTransfer.files[i].name.split(".").pop().includes("idf")) {
           idf = e.dataTransfer.files[i];
           console.log("idf file loaded");
         }
 
-        if (
-          e.dataTransfer.files[i].name
-            .split(".")
-            .pop()
-            .includes("epw")
-        ) {
+        if (e.dataTransfer.files[i].name.split(".").pop().includes("epw")) {
           epw = e.dataTransfer.files[i];
           console.log("epw file loaded!");
         }
       }
-    } else if (
-      e.dataTransfer.files[0].name
-        .split(".")
-        .pop()
-        .includes("idf")
-    ) {
+    } else if (e.dataTransfer.files[0].name.split(".").pop().includes("idf")) {
       console.log("correct file!");
       idf = e.dataTransfer.files[0];
-    } else if (
-      e.dataTransfer.files[0].name
-        .split(".")
-        .pop()
-        .includes("epw")
-    ) {
+    } else if (e.dataTransfer.files[0].name.split(".").pop().includes("epw")) {
       console.log("correct file!");
       epw = e.dataTransfer.files[0];
     }

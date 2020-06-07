@@ -1,11 +1,10 @@
-
-:root{
-/* Color Theme Swatches in Hex */
---Terrazzo-1-hex: #034001;
---Terrazzo-2-hex: #022601;
---Terrazzo-3-hex: #66A649;
---Terrazzo-4-hex: #D9806C;
---Terrazzo-5-hex: #F2F2F2;
+:root {
+  /* Color Theme Swatches in Hex */
+  --Terrazzo-1-hex: #034001;
+  --Terrazzo-2-hex: #022601;
+  --Terrazzo-3-hex: #66a649;
+  --Terrazzo-4-hex: #d9806c;
+  --Terrazzo-5-hex: #f2f2f2;
 }
 
 /* Color Theme Swatches in RGBA 
@@ -46,7 +45,7 @@ body {
   width: 100%;
 }
 
-#simulations{
+#simulations {
   /* position: fixed; */
   top: 0px;
   left: 0px;
@@ -55,22 +54,22 @@ body {
   overflow-y: auto;
 }
 
-#dashboard{
+#dashboard {
   width: 100%;
   height: 100%;
   left: 100%;
   position: fixed;
-  background: var(--Terrazzo-2-hex)
+  background: var(--Terrazzo-2-hex);
 }
 
-#simulationAdditionPanel{
+#simulationAdditionPanel {
   width: 100%;
   height: 100%;
   left: 0;
   position: fixed;
 }
 
-#bottomControls{
+#bottomControls {
   background-color: var(--Terrazzo-1-hex);
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
@@ -165,7 +164,7 @@ h2 {
   width: 100%;
   top: -5px;
   opacity: 0;
-  transition: .3s ease;
+  transition: 0.3s ease;
   border: 5px solid transparent;
   background-color: red;
   border-radius: 15px;
@@ -204,7 +203,8 @@ h2 {
   border-bottom-color: red !important;
 } */
 
-p:disabled, p[disabled] {
+p:disabled,
+p[disabled] {
   pointer-events: none;
   border: 4px solid var(--Terrazzo-2-hex) !important;
   color: var(--Terrazzo-2-hex) !important;
@@ -218,6 +218,18 @@ p:disabled, p[disabled] {
 
 #runSim {
   right: 20px;
+  bottom: 20px;
+  position: absolute;
+}
+
+#visualize {
+  right: 20px;
+  bottom: 20px;
+  position: absolute;
+}
+
+#midSim {
+  right: 410px;
   bottom: 20px;
   position: absolute;
 }
@@ -237,9 +249,9 @@ p:disabled, p[disabled] {
 }
 
 .simButton:hover {
-  color: var(--Terrazzo-3-hex)  !important;
+  color: var(--Terrazzo-3-hex) !important;
   border-radius: 25px;
-  transition: all 0.4s ease 0s; 
+  transition: all 0.4s ease 0s;
   border: 4px solid var(--Terrazzo-3-hex) !important;
 }
 
@@ -248,20 +260,16 @@ p {
   margin: 5;
 }
 
-#waitHeaderContainer{
+#waitHeaderContainer {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
 }
 
-#waitHeader{
+#waitHeader {
   margin-top: 0;
   color: var(--Terrazzo-5-hex);
 }
-
-
-
-
 
 .lds-ring {
   display: inline-block;

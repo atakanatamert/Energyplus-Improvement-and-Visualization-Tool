@@ -6,6 +6,7 @@
   "dependencies": {
     "apexcharts": "^3.10.1",
     "electron": "^6.0.12",
+    "find-remove": "^2.0.1",
     "gbxml-viewer-basic": "^0.5.2",
     "papaparse": "^5.1.0"
   },

@@ -1,0 +1,156 @@
+Program Version,EnergyPlus, Version 9.2.0-921312fa1d, YMD=2020.06.07 16:25,
+   ************* Beginning Zone Sizing Calculations
+   ** Warning ** Weather file location will be used rather than entered (IDF) Location object.
+   **   ~~~   ** ..Location object=USA IL-CHICAGO-OHARE
+   **   ~~~   ** ..Weather File Location=STOCKHOLM_ ARLANDA - SWE IWEC Data WMO#=024600
+   **   ~~~   ** ..due to location differences, Latitude difference=[17.88] degrees, Longitude difference=[105.70] degrees.
+   **   ~~~   ** ..Time Zone difference=[7.0] hour(s), Elevation difference=[67.89] percent, [129.00] meters.
+   ** Warning ** Calculated design heating load for zone=FLOOR 1 KITCHEN is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=FLOOR 2 CLEAN 2 is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=FLOOR 2 EXAM 3 is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=FLOOR 2 LOUNGE 1 is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=FLOOR 2 OFFICE 3 is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=FLOOR 2 PROCEDURE 2 is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=FLOOR 2 SOIL 2 is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=FLOOR 2 STORAGE 2 is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=FLOOR 2 TRAUMA is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=FLOOR 3 CLEAN is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=FLOOR 3 SOIL is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=FLOOR 4-6 CLEAN is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=FLOOR 4-6 SOIL is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ** Warning ** Calculated design heating load for zone=MOB FLOOR 2-4 CORE is zero.
+   **   ~~~   ** Check Sizing:Zone and ZoneControl:Thermostat inputs.
+   ************* Beginning System Sizing Calculations
+   ************* Beginning Plant Sizing Calculations
+   ** Warning ** The design coil load is zero for Coil:Heating:Water AHU1_HEATC 1
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ** Warning ** The design coil load is zero for Coil:Heating:Water AHU1_HEATC 2
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ** Warning ** The design coil load is zero for Coil:Heating:Water AHU1_HEATC 3
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ** Warning ** The design coil load is zero for Coil:Heating:Water AHU1_HEATC 4
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ** Warning ** The design coil load is zero for Coil:Heating:Water AHU3_HEATC 1
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ** Warning ** The design coil load is zero for Coil:Heating:Water AHU3_HEATC 2
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ** Warning ** The design coil load is zero for Coil:Heating:Water AHU3_HEATC 3
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ** Warning ** The design coil load is zero for Coil:Heating:Water AHU3_HEATC 4
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ** Warning ** SizeWaterCoil: Coil="AHU3_COOLC 1", Cooling Coil has leaving air temperature < entering water temperature.
+   **   ~~~   **     Tair,out  =  4.554
+   **   ~~~   **     Twater,in = 6.670
+   **   ~~~   ** ....coil leaving air temperature will be reset to:
+   **   ~~~   **     Tair,out = 7.170
+   ** Warning ** SizeWaterCoil: Coil="AHU3_COOLC 2", Cooling Coil has leaving air temperature < entering water temperature.
+   **   ~~~   **     Tair,out  =  4.554
+   **   ~~~   **     Twater,in = 6.670
+   **   ~~~   ** ....coil leaving air temperature will be reset to:
+   **   ~~~   **     Tair,out = 7.170
+   ** Warning ** The design coil load is zero for Coil:Heating:Water AHU6_HEATC 1
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ** Warning ** The design coil load is zero for Coil:Heating:Water AHU6_HEATC 2
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ** Warning ** The design coil load is zero for Coil:Heating:Water AHU6_HEATC 3
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ** Warning ** The design coil load is zero for Coil:Heating:Water AHU6_HEATC 4
+   **   ~~~   ** The autosize value for maximum water flow rate is zero
+   **   ~~~   ** To change this, input a value for UA, change the heating design day, or raise the
+   **   ~~~   **   system heating design supply air temperature. Also check to make sure the Preheat
+   **   ~~~   **   Design Temperature is not the same as the Central Heating Design Supply Air Temperature. 
+   ************* Testing Individual Branch Integrity
+   ************* All Branches passed integrity testing
+   ************* Testing Individual Supply Air Path Integrity
+   ************* All Supply Air Paths passed integrity testing
+   ************* Testing Individual Return Air Path Integrity
+   ************* All Return Air Paths passed integrity testing
+   ************* No node connection errors were found.
+   ************* Beginning Simulation
+   ** Warning ** Output:Table:Monthly requested with SimulationControl Run Simulation for Weather File Run Periods set to No so Output:Table:Monthly will not be generated
+   ** Warning ** GetInputEconomicsTariff: UtilityCost:Tariff="PSI_LLF_LOWLOADFACTORSERVICE" atypical meter
+   **   ~~~   ** The meter chosen "ELECTRICITYNET:FACILITY is not typically used with the buyFromUtility option.
+   **   ~~~   ** Usually the Electricity:Facility meter or the ElectricityPurchased:Facility is selected when the buyFromUtility option is used.
+   ** Warning ** GetInputEconomicsTariff: UtilityCost:Tariff="PSI_CS_COMMERCIALELECTRICSERVICE" atypical meter
+   **   ~~~   ** The meter chosen "ELECTRICITYNET:FACILITY is not typically used with the buyFromUtility option.
+   **   ~~~   ** Usually the Electricity:Facility meter or the ElectricityPurchased:Facility is selected when the buyFromUtility option is used.
+   ** Warning ** SolveAirLoopControllers: Maximum iterations (50) exceeded for AHU2, at CHICAGO ANN CLG .4% CONDNS DB=>MWB, 07/21 14:20 - 14:30
+   ** Warning ** SolveAirLoopControllers: Maximum iterations (50) exceeded for AHU1, at CHICAGO ANN CLG .4% CONDNS DB=>MWB, 07/21 14:20 - 14:30
+   ** Warning ** SolveAirLoopControllers: Maximum iterations (50) exceeded for AHU2, at CHICAGO ANN CLG .4% CONDNS DB=>MWB, 07/21 14:30 - 14:40
+   ** Warning ** SolveAirLoopControllers: Maximum iterations (50) exceeded for AHU1, at CHICAGO ANN CLG .4% CONDNS DB=>MWB, 07/21 14:30 - 14:40
+   ** Warning ** SolveAirLoopControllers: Maximum iterations (50) exceeded for AHU1, at CHICAGO ANN CLG .4% CONDNS DB=>MWB, 07/21 14:40 - 14:50
+   ** Warning ** SolveAirLoopControllers: Maximum iterations (50) exceeded for AHU2, at CHICAGO ANN CLG .4% CONDNS DB=>MWB, 07/21 14:50 - 15:00
+   ** Warning ** SolveAirLoopControllers: Maximum iterations (50) exceeded for AHU1, at CHICAGO ANN CLG .4% CONDNS DB=>MWB, 07/21 20:00 - 20:05
+   ** Warning ** SolveAirLoopControllers: Maximum iterations (50) exceeded for AHU2, at CHICAGO ANN CLG .4% CONDNS DB=>MWB, 07/21 22:00 - 22:05
+   ** Warning ** SolveAirLoopControllers: Maximum iterations (50) exceeded for AHU2, at CHICAGO ANN CLG .4% CONDNS WB=>MDB, 07/21 08:10 - 08:20
+   ** Warning ** SolveAirLoopControllers: Maximum iterations (50) exceeded for AHU1, at CHICAGO ANN CLG .4% CONDNS WB=>MDB, 07/21 14:00 - 14:10
+   ** Warning ** SolveAirLoopControllers: Maximum iterations (50) exceeded for AHU1, at CHICAGO ANN CLG .4% CONDNS WB=>MDB, 07/21 14:00 - 14:10
+   ** Warning ** SolveAirLoopControllers: Maximum iterations (50) exceeded for AHU1, at CHICAGO ANN CLG .4% CONDNS WB=>MDB, 07/21 14:20 - 14:30
+   ** Warning ** SolveAirLoopControllers: Maximum iterations (50) exceeded for AHU1, at CHICAGO ANN CLG .4% CONDNS WB=>MDB, 07/21 14:20 - 14:30
+   ** Warning ** SolveAirLoopControllers: Maximum iterations (50) exceeded for AHU1, at CHICAGO ANN CLG .4% CONDNS WB=>MDB, 07/21 14:40 - 14:50
+   ************* Simulation Error Summary *************
+   ************* There are 2 unused objects in input.
+   ************* Use Output:Diagnostics,DisplayUnusedObjects; to see them.
+   *************
+   ************* ===== Recurring Error Summary =====
+   ************* The following recurring error messages occurred.
+   *************
+   *************  ** Warning ** SolveAirLoopControllers: Exceeding Maximum iterations for AHU5 during CHICAGO ANN CLG .4% CONDNS WB=>MDB continues
+   *************  **   ~~~   **   This error occurred 1 total times;
+   *************  **   ~~~   **   during Warmup 0 times;
+   *************  **   ~~~   **   during Sizing 0 times.
+   *************
+   *************  ** Warning ** SolveAirLoopControllers: Exceeding Maximum iterations for AHU2 during CHICAGO ANN CLG .4% CONDNS WB=>MDB continues
+   *************  **   ~~~   **   This error occurred 5 total times;
+   *************  **   ~~~   **   during Warmup 0 times;
+   *************  **   ~~~   **   during Sizing 0 times.
+   *************
+   ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 0 Severe Errors.
+   ************* EnergyPlus Sizing Error Summary. During Sizing: 15 Warning; 0 Severe Errors.
+   ************* EnergyPlus Completed Successfully-- 52 Warning; 0 Severe Errors; Elapsed Time=00hr 00min 31.00sec

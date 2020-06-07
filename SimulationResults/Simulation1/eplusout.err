@@ -1,0 +1,12 @@
+Program Version,EnergyPlus, Version 9.2.0-921312fa1d, YMD=2020.06.07 16:25,
+   ** Severe  ** Line: 1056 You must run the ExpandObjects program for "HVACTemplate:Thermostat"
+   ** Severe  ** Line: 1065 You must run the ExpandObjects program for "HVACTemplate:Zone:IdealLoadsAirSystem"
+   **  Fatal  ** Errors occurred on processing input file. Preceding condition(s) cause termination.
+   ...Summary of Errors that led to program termination:
+   ..... Reference severe error count=2
+   ..... Last severe error=Line: 1065 You must run the ExpandObjects program for "HVACTemplate:Zone:IdealLoadsAirSystem"
+   ************* Warning:  Node connection errors not checked - most system input has not been read (see previous warning).
+   ************* Fatal error -- final processing.  Program exited before simulations began.  See previous error messages.
+   ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 0 Severe Errors.
+   ************* EnergyPlus Sizing Error Summary. During Sizing: 0 Warning; 0 Severe Errors.
+   ************* EnergyPlus Terminated--Fatal Error Detected. 0 Warning; 2 Severe Errors; Elapsed Time=00hr 00min  0.21sec
